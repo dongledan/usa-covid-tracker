@@ -101,7 +101,7 @@ export default class Home extends Component {
         }
         {currentCounty.length
         ?
-          <Table currentCounty={currentCounty} day={timelineDay} prevDay={prevTimelineDay} botTen={botTen} topTen={topTen}/>
+          <Table day={timelineDay} prevDay={prevTimelineDay} botTen={botTen} topTen={topTen}/>
         :
           <span />
         }

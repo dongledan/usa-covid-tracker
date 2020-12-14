@@ -2,7 +2,7 @@ import React from 'react';
 import TableBody from './TableBody';
 
 export default function Table(props) {
-  const { currentCounty, day, prevDay, topTen, botTen } = props;
+  const { day, prevDay, topTen, botTen } = props;
  
   return (
     <div className="table-container">
