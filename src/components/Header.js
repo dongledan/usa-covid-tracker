@@ -30,7 +30,7 @@ export default class Header extends Component {
         <div className="header-sub-container">
           <div className="header-subtitle">USA by the numbers:</div>
           <div className="header-data">A total of <span className="number">{current.cases}</span> were infected.</div>
-          <div className="header-data"><span className="number">{current.deaths}</span> people have died.</div>
+          <div className="header-data"><span className="number">{current.deaths}</span> people have <div className="tooltip">died  <span class="tooltiptext"><span className="number">{Math.round(current.deaths / 2977)}x</span> more than 9/11 attacks. <br/><span className="number">{Math.round(current.deaths/58220)}x</span> more than Vietnam War. <br/><span className="number">{Math.round(current.deaths/116516)}x</span> more than WWI.</span></div>.</div>
           <div className="header-caption">Last updated on {humanDateFormat(current.updated)}</div>
         </div>
       </div>
