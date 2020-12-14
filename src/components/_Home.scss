@@ -1,5 +1,9 @@
 .home-container {
-
+  .input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .data-container {
     margin: 50px auto;
     font-size: 1.188em;

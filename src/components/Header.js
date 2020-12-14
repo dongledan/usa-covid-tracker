@@ -26,11 +26,14 @@ export default class Header extends Component {
     return (
       <div className="header-container">
         <div className="header-title">Spread <span className="blue">FACTS</span>, Not <span className="red">COVID</span>.</div>
-        <div className="header-subtitle">USA by the numbers:</div>
-        <div className="header-data">A total of <span className="number">{current.cases}</span> were infected.</div>
-        <div className="header-data"><span className="number">{current.deaths}</span> people have died.</div>
-        <div className="header-caption">Last updated on {current.updated}</div>
+        <div className="header-sub-container">
+          <div className="header-subtitle">USA by the numbers:</div>
+          <div className="header-data">A total of <span className="number">{current.cases}</span> were infected.</div>
+          <div className="header-data"><span className="number">{current.deaths}</span> people have died.</div>
+          <div className="header-caption">Last updated on {current.updated}</div>
+        </div>
       </div>
+       
     )
   }
 }

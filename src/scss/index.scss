@@ -17,16 +17,26 @@ body {
   color: #fff;
 }
 
+button {
+  border: none;
+  outline: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  margin: 0 20px;
+  background: $green;
+  color: #fff;
+  cursor: pointer;
+}
+
 .input {
   display: flex;
   max-width: 315px;
   background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: none;
   outline: none;
   padding: 15px 10px;
   font-size: small;
   line-height: 1.5em;
-  margin: auto;
   align-items: center;
   border-radius: 5px;
 
@@ -35,6 +45,7 @@ body {
     width: auto;
     opacity: 0.6;
     margin-top: -2px;
+    float: left;
   }
 
   input {
@@ -50,9 +61,10 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   font-weight: 700;
   color: $red;
-  background: rgba(255, 255, 255, 0.3);
+  background: #000;
   padding: 5px;
   letter-spacing: 2px;
+  border-radius: 5px;
 }
 
 .red {
@@ -63,4 +75,59 @@ body {
 .blue {
   color: $blue;
   font-weight: 700;
+}
+
+.react-autosuggest__container {
+  position: relative;
+}
+
+.react-autosuggest__input {
+  border: none;
+  border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+  outline: none;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  max-width: 315px;
+  width: 100%;
+  top: 34px;
+  left: -25px;
+  border: none;
+  color: #000;
+  padding-left: 27px;
+  padding-right: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 2;
+  font-size: small;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  text-decoration: underline;
 }
