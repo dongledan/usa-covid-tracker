@@ -2,6 +2,7 @@
 @import 'colors';
 
 @import '../components/Header';
+@import '../components/Home';
 
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
@@ -49,7 +50,6 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   font-weight: 700;
   color: $red;
-  font-size: x-large;
   background: rgba(255, 255, 255, 0.3);
   padding: 5px;
   letter-spacing: 2px;
@@ -57,10 +57,10 @@ body {
 
 .red {
   color: $red;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.green {
+.blue {
   color: $blue;
-  font-weight: 800;
+  font-weight: 700;
 }

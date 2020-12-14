@@ -1,36 +1,44 @@
 import React, { Component } from 'react';
-import { getCurrentTracking } from '../covid-tracking';
+import { getCurrentStateCases } from '../covid-tracking';
 import search from '../images/search-icon.png'
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: {}
+      currentState: {},
+      value: ''
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    try {
-      this.getData();
-    } catch (error) {
-      console.log(error);
-    }
+  handleChange(event) {
+    this.setState({value: event.target.value});
+    event.preventDefault();
   }
 
   async getData() {
-    const { data } = await getCurrentTracking();
-    this.setState({current: data[0]});
+    const { value } = this.state;
+    const { data } = await getCurrentStateCases(value);
+    this.setState({currentState: data});
   }
   render() {
-    const { current } = this.state;
+    const { value, currentState } = this.state;
     return (
-      <div>
+      <div className="home-container">
         <div className="input">
           <img className="search-icon" src={search}/>
-          <input placeholder="Search for your state or county" />
-
+          <input placeholder="Search for your state or county" value={value} type="text" onChange={this.handleChange}/>
+          <button onClick={() => this.getData()}>Submit</button>
         </div>
+        {
+          currentState.state ? 
+            <div className="data-container">
+              <div className="state-data">Today in <span className="blue">{currentState.state}</span>, there have been <span className="number">{currentState.todayCases}</span> new cases and <span className="number">{currentState.todayDeaths}</span> more deaths. There have been a total of <span className="number">{currentState.cases}</span> cases and <span className="number">{currentState.deaths}</span> deaths.</div>
+            </div>
+          : 
+            <span />
+        }
       </div>
     )
   }

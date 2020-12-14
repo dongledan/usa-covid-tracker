@@ -19,17 +19,17 @@ export default class Header extends Component {
 
   async getData() {
     const { data } = await getCurrentTracking();
-    this.setState({current: data[0]});
+    this.setState({current: data});
   }
   render() {
     const { current } = this.state;
     return (
       <div className="header-container">
-        <div className="header-title">Spread <span className="green">FACTS</span>, Not <span className="red">COVID</span>.</div>
+        <div className="header-title">Spread <span className="blue">FACTS</span>, Not <span className="red">COVID</span>.</div>
         <div className="header-subtitle">USA by the numbers:</div>
-        <div className="header-data">A total of <span className="number">{current.positive}</span> were infected.</div>
-        <div className="header-data"><span className="number">{current.death}</span> people have died.</div>
-        <div className="header-caption">Last updated on {current.date}</div>
+        <div className="header-data">A total of <span className="number">{current.cases}</span> were infected.</div>
+        <div className="header-data"><span className="number">{current.deaths}</span> people have died.</div>
+        <div className="header-caption">Last updated on {current.updated}</div>
       </div>
     )
   }
