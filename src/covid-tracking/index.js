@@ -14,4 +14,4 @@ export const getCurrentStateCases = (state) => axios.get(`https://disease.sh/v3/
 
 
 // data sourced from Johns Hopkins University, updated every 10 minutes
-export const getAllStateEndpoints = () => axios.get(`https://disease.sh/v3/covid-19/historical/usacounties`, {headers});
+export const getCurrentCountyCases = (state) => axios.get(`https://disease.sh/v3/covid-19/historical/usacounties/${state}?lastdays=2`, {headers});

@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 
-import { getCurrentStateCases } from '../covid-tracking';
-import { getSuggestionValue, getSuggestions, renderSuggestion } from './utils';
+import { getCurrentStateCases, getCurrentCountyCases } from '../covid-tracking';
+import { getSuggestionValue, getSuggestions, renderSuggestion, pastThreeDays } from './utils';
 import search from '../images/search-icon.png';
+
+import Table from './Table';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentState: {},
+      currentCounty: [],
+      timelineDay: '',
+      prevTimelineDay: '',
       value: '',
-      suggestions: []
+      suggestions: [],
     }
     this.onChange = this.onChange.bind(this);
   }
@@ -39,13 +44,34 @@ export default class Home extends Component {
     const { data } = await getCurrentStateCases(value);
     this.setState({currentState: data});
   }
+
+  async getCountyData() {
+    const { value } = this.state;
+    const threeDays = pastThreeDays();
+    const { data } = await getCurrentCountyCases(value);
+    let day = '';
+    let prevDay = '';
+    for (let i = 0; i < threeDays.length; i++) {
+      const currDay = threeDays[i];
+      if (data[0].timeline.cases[currDay]) {
+        day = currDay;
+        prevDay = threeDays[i + 1];
+        break;
+      }
+    }
+    const sortedData = data.sort((a,b) => (
+      (b.timeline.cases[day] - b.timeline.cases[prevDay]) - (a.timeline.cases[day] - a.timeline.cases[prevDay])
+    ))
+
+    this.setState({currentCounty:  sortedData, timelineDay: day, prevTimelineDay: prevDay })
+  }
+
   render() {
-    const { value, currentState, suggestions } = this.state;
+    const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay } = this.state;
     const inputProps = {
       placeholder: 'Search for your state',
       value,
       onChange: this.onChange,
-      onClick: () => this.getData()
     };
     return (
       <div className="home-container">
@@ -61,7 +87,7 @@ export default class Home extends Component {
               inputProps={inputProps}
             />
           </div>
-          <button onClick={() => this.getData()}>Submit</button>
+          <button onClick={() => {this.getData(); this.getCountyData()}}>Submit</button>
         </div>
         {
           currentState.state ? 
@@ -70,6 +96,12 @@ export default class Home extends Component {
             </div>
           : 
             <span />
+        }
+        {currentCounty.length
+        ?
+          <Table currentCounty={currentCounty} day={timelineDay} prevDay={prevTimelineDay} />
+        :
+          <span />
         }
       </div>
     )

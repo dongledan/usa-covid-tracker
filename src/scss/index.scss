@@ -3,6 +3,8 @@
 
 @import '../components/Header';
 @import '../components/Home';
+@import '../components/Table';
+@import '../components/Footer';
 
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
@@ -26,6 +28,15 @@ button {
   background: $green;
   color: #fff;
   cursor: pointer;
+}
+
+a {
+  color: #000;
+  transition: all 0.2s ease-in;
+
+    &:hover {
+      color: $green;
+    }
 }
 
 .input {

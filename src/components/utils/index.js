@@ -6,13 +6,37 @@ export const getSuggestions = value => {
   );
 };
 
-export const getSuggestionValue = suggestion => suggestion;
+export const getSuggestionValue = suggestion => suggestion.toLowerCase();
 
 export const renderSuggestion = suggestion => (
   <div className="suggestions">
     {suggestion}
   </div>
 );
+
+export const humanDateFormat = (milliseconds) => {
+  const dateObject = new Date(milliseconds);
+  return dateObject.toLocaleString();
+}
+
+export const pastThreeDays = () => {
+  let todaysDate = new Date(),
+  month = '' + (todaysDate.getMonth() + 1),
+  day = '' + todaysDate.getDate(),
+  year = todaysDate.getFullYear().toString().substr(2,2);
+
+  const pastThreeDays = [];
+
+  if (month.length < 2) 
+    month = '0' + month;
+  if (day.length < 2) 
+    day = '0' + day;
+  for (let i = 0; i < 3; i++) {
+    const date = [month, day - i, year].join('/');
+    pastThreeDays.push(date);
+  }
+  return pastThreeDays;
+}
 
 const states =  [
   "Alabama",

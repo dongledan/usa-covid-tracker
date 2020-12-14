@@ -1,0 +1,38 @@
+.table-container {
+  display: flex;
+  justify-content: space-evenly;;
+
+  .table-rank {
+    width: 45%;
+
+    h1 {
+      color: $red;
+      text-align: center;
+    }
+    .table {
+      border-radius: 5px;
+      font-weight: normal;
+      border: none;
+      border-collapse: collapse;
+      width: 100%;
+      white-space: nowrap;
+      td, th {
+        text-align: left;
+        padding: 5px 20px;
+      }
+
+      tbody:nth-child(odd) {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      thead {
+        background: $blue;
+      }
+
+      td {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+      }
+    }
+  }
+  
+}
