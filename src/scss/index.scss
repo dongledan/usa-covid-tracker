@@ -1,7 +1,7 @@
 @import 'breakpoints';
 @import 'colors';
 
-@import '../components/Navbar';
+@import '../components/Header';
 
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
@@ -12,4 +12,55 @@ html { font-family: 'Inter', sans-serif; }
 body {
   scroll-behavior: smooth;
   margin: 0;
+  background: $base;
+  color: #fff;
+}
+
+.input {
+  display: flex;
+  max-width: 315px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+  padding: 15px 10px;
+  font-size: small;
+  line-height: 1.5em;
+  margin: auto;
+  align-items: center;
+  border-radius: 5px;
+
+  .search-icon {
+    height: 16px;
+    width: auto;
+    opacity: 0.6;
+    margin-top: -2px;
+  }
+
+  input {
+    background: none;
+    outline: none;
+    border: none;
+    width: 100%;
+    margin: 0 10px;
+  }
+}
+
+.number {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-weight: 700;
+  color: $red;
+  font-size: x-large;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  letter-spacing: 2px;
+}
+
+.red {
+  color: $red;
+  font-weight: 800;
+}
+
+.green {
+  color: $blue;
+  font-weight: 800;
 }

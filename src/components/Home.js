@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getCurrentTracking } from '../covid-tracking';
+import search from '../images/search-icon.png'
 
 export default class Home extends Component {
   constructor(props) {
@@ -25,8 +26,11 @@ export default class Home extends Component {
     const { current } = this.state;
     return (
       <div>
-        <div>{current.death}</div>
-        <div>{current.positive}</div>
+        <div className="input">
+          <img className="search-icon" src={search}/>
+          <input placeholder="Search for your state or county" />
+
+        </div>
       </div>
     )
   }

@@ -1,0 +1,30 @@
+.header-container {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .header-title {
+    font-size: 3em;
+    font-weight: 600;
+    margin: 25px 0;
+  }
+
+  .header-subtitle {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .header-data {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 3px 0;
+  }
+
+  .header-caption {
+    font-size: small;
+    margin: 5px 0;
+  }
+}
