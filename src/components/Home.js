@@ -68,6 +68,8 @@ export default class Home extends Component {
 
   render() {
     const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay } = this.state;
+    const topTen = currentCounty.slice(0, 10);
+    const botTen = currentCounty.slice(-10).reverse();
     const inputProps = {
       placeholder: 'Search for your state',
       value,
@@ -99,7 +101,7 @@ export default class Home extends Component {
         }
         {currentCounty.length
         ?
-          <Table currentCounty={currentCounty} day={timelineDay} prevDay={prevTimelineDay} />
+          <Table currentCounty={currentCounty} day={timelineDay} prevDay={prevTimelineDay} botTen={botTen} topTen={topTen}/>
         :
           <span />
         }

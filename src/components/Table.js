@@ -2,9 +2,8 @@ import React from 'react';
 import TableBody from './TableBody';
 
 export default function Table(props) {
-  const { currentCounty, day, prevDay } = props;
-  const topTen = currentCounty.slice(0, 10);
-  const botTen = currentCounty.slice(-10).reverse();
+  const { currentCounty, day, prevDay, topTen, botTen } = props;
+ 
   return (
     <div className="table-container">
       <div className="table-rank">
