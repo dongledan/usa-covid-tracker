@@ -7,6 +7,12 @@
   .footer-img {
     height: 64px;
     width: auto;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      transform: translateY(-5px);
+      
+    }
   }  
 
   .footer-text {

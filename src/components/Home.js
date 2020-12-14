@@ -17,6 +17,8 @@ export default class Home extends Component {
       prevTimelineDay: '',
       value: '',
       suggestions: [],
+      topTen: [],
+      botTen: []
     }
     this.onChange = this.onChange.bind(this);
   }
