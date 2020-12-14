@@ -38,7 +38,7 @@ export const pastThreeDays = () => {
   return pastThreeDays;
 }
 
-const states =  [
+export const states =  [
   "Alabama",
   "Alaska",
   "American Samoa",

@@ -17,6 +17,8 @@ export default class Home extends Component {
       prevTimelineDay: '',
       value: '',
       suggestions: [],
+      topTen: [],
+      botTen: []
     }
     this.onChange = this.onChange.bind(this);
   }
@@ -68,6 +70,8 @@ export default class Home extends Component {
 
   render() {
     const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay } = this.state;
+    const topTen = currentCounty.slice(0, 10);
+    const botTen = currentCounty.slice(-10).reverse();
     const inputProps = {
       placeholder: 'Search for your state',
       value,
@@ -92,14 +96,14 @@ export default class Home extends Component {
         {
           currentState.state ? 
             <div className="data-container">
-              <div className="state-data">Today in <span className="blue">{currentState.state}</span>, there have been <span className="number">{currentState.todayCases}</span> new cases and <span className="number">{currentState.todayDeaths}</span> more deaths. There have been a total of <span className="number">{currentState.cases}</span> cases and <span className="number">{currentState.deaths}</span> deaths.</div>
+              <div className="state-data">Today in <span className="blue">{currentState.state}</span>, there have been <span className="number">{currentState.todayCases}</span> new cases and <span className="number">{currentState.todayDeaths}</span> more deaths. There have been a total of <span className="number">{currentState.cases}</span> cases and <span className="number">{currentState.deaths}</span> deaths. Last updated on {timelineDay}.</div>
             </div>
           : 
             <span />
         }
         {currentCounty.length
         ?
-          <Table currentCounty={currentCounty} day={timelineDay} prevDay={prevTimelineDay} />
+          <Table day={timelineDay} prevDay={prevTimelineDay} botTen={botTen} topTen={topTen}/>
         :
           <span />
         }

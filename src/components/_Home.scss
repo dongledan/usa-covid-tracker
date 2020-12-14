@@ -8,5 +8,9 @@
     margin: 50px auto;
     font-size: 1.188em;
     line-height: 1.8em;
+
+    @include mobile {
+      font-size: 1em;
+    }
   }
 }

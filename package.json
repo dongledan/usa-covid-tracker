@@ -7,6 +7,8 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.21.0",
+    "enzyme": "^3.11.0",
+    "expect": "^26.6.2",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-autosuggest": "^10.0.4",

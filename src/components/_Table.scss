@@ -1,9 +1,19 @@
 .table-container {
   display: flex;
-  justify-content: space-evenly;;
+  justify-content: space-evenly;
+
+  @include mobile {
+    flex-direction: column;
+    font-size: small;
+  }
 
   .table-rank {
     width: 45%;
+
+    @include mobile {
+      width: 100%;
+      margin: 20px 0;
+    }
 
     h1 {
       color: $red;
