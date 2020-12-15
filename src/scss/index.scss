@@ -6,6 +6,8 @@
 @import '../components/Table';
 @import '../components/Footer';
 
+@import '../components/Loading';
+
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
 @supports (font-variation-settings: normal) {
@@ -76,6 +78,10 @@ a {
   padding: 5px;
   letter-spacing: 2px;
   border-radius: 5px;
+}
+
+.date {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .red {

@@ -20,23 +20,22 @@ export const humanDateFormat = (milliseconds) => {
 }
 
 export const pastDays = () => {
-  let todaysDate = new Date(),
-  month = '' + (todaysDate.getMonth() + 1),
-  day = '' + todaysDate.getDate(),
-  year = todaysDate.getFullYear().toString().substr(2,2);
-
-  const pastThreeDays = [];
-
-  if (month.length < 2) 
-    month = '0' + month;
-  if (day.length < 2) 
-    day = '0' + day;
+  const pastDays = [];
   for (let i = 0; i < 5; i++) {
-    const date = [month, day - i, year].join('/');
-    pastThreeDays.push(date);
+    let realDate = new Date(Date.now() - i * 24 * 60 * 60 * 1000),
+    month = '' + (realDate.getMonth() + 1),
+    day = '' + realDate.getDate(),
+    year = realDate.getFullYear().toString().substr(2,2);
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    let actualDate = [month, day, year].join('/');
+
+    pastDays.push(actualDate);
   }
-  return pastThreeDays;
+  return pastDays;
 }
+
+export const nearestHundredth = (num) => Math.round(num * 100) / 100;
 
 export const states =  [
   "Alabama",

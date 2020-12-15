@@ -33,7 +33,7 @@
     }
   
     .header-data {
-      font-size: 1.5em;
+      font-size: 1.3em;
       margin: 3px 0;
       line-height: 1.8em;
 
@@ -51,7 +51,7 @@
     
     .tooltip .tooltiptext {
       visibility: hidden;
-      min-width: 200px;
+      min-width: 250px;
       font-size: small;
       background-color: $black;
       color: #fff;
@@ -59,15 +59,15 @@
       padding: 15px;
       position: absolute;
       z-index: 1;
-      top: 150%;
+      top: 120%;
       left: 50%;
-      margin-left: -115px;
+      margin-left: -137px;
     }
     
     .tooltip .tooltiptext::after {
       content: "";
       position: absolute;
-      bottom: 100%; /* At the bottom of the tooltip */
+      bottom: 100%;
       left: 50%;
       margin-left: -5px;
       border-width: 5px;

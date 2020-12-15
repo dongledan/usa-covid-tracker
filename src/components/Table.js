@@ -1,41 +1,49 @@
 import React from 'react';
 import TableBody from './TableBody';
+import Loading from './Loading';
 
 export default function Table(props) {
-  const { day, prevDay, topTen, botTen } = props;
+  const { day, prevDay, topDaily, botDaily, isLoading } = props;
  
   return (
-    <div className="table-container">
-      <div className="table-rank">
-        <h1>Most Daily Cases</h1>
-        <table className="table">
-            <thead>
-              <tr className="table-header">
-                <th>County</th>
-                <th>Cases</th>
-                <th>Deaths</th>
-              </tr>
-            </thead>
-            {topTen.map((county, i) => (
-              <TableBody county={county} day={day} prevDay={prevDay} i={i}/>
-            ))}
-        </table>
-      </div>
-      <div className="table-rank">
-        <h1>Least Daily Cases</h1>
-        <table className="table">
-            <thead>
-              <tr className="table-header">
-                <th>County</th>
-                <th>Cases</th>
-                <th>Deaths</th>
-              </tr>
-            </thead>
-            {botTen.map((county, i) => (
-              <TableBody county={county} day={day} prevDay={prevDay} i={i} />
-            ))}
-        </table>
-      </div>
-    </div>
+    <span>
+    { 
+      isLoading ?
+        <Loading /> 
+      :
+        <div className="table-container">
+          <div className="table-rank">
+            <div className="table-name">Most Daily Cases</div>
+            <table className="table">
+                <thead>
+                  <tr className="table-header">
+                    <th>County</th>
+                    <th>Cases</th>
+                    <th>Deaths</th>
+                  </tr>
+                </thead>
+                {topDaily.map((county, i) => (
+                  <TableBody county={county} day={day} prevDay={prevDay} i={i}/>
+                ))}
+            </table>
+          </div>
+          <div className="table-rank">
+            <div className="table-name">Least Daily Cases</div>
+            <table className="table">
+                <thead>
+                  <tr className="table-header">
+                    <th>County</th>
+                    <th>Cases</th>
+                    <th>Deaths</th>
+                  </tr>
+                </thead>
+                {botDaily.map((county, i) => (
+                  <TableBody county={county} day={day} prevDay={prevDay} i={i} />
+                ))}
+            </table>
+          </div>
+        </div>
+      }
+    </span>
   )
 }
