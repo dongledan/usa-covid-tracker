@@ -1,4 +1,4 @@
-import { humanDateFormat, pastThreeDays, getSuggestions, states } from './index.js';
+import { humanDateFormat, pastDays, getSuggestions, states } from './index.js';
 import expect from 'expect';
 
 describe('humanDateFormat()', () => {
@@ -7,13 +7,13 @@ describe('humanDateFormat()', () => {
   });
 });
 
-describe('pastThreeDays()', () => {
-  it('returns an array with 3 days', () => {
-    expect(pastThreeDays().length).toEqual(3);
+describe('pastDays()', () => {
+  it('returns an array with 5 days', () => {
+    expect(pastDays().length).toEqual(5);
   });
 
   it('returns in a MM/DD/YY format or a total length of 8', () => {
-    expect(pastThreeDays()[0].length).toEqual(8);
+    expect(pastDays()[0].length).toEqual(8);
   })
 });
 

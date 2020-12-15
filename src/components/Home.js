@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 
 import { getCurrentStateCases, getCurrentCountyCases } from '../covid-tracking';
-import { getSuggestionValue, getSuggestions, renderSuggestion, pastThreeDays } from './utils';
+import { getSuggestionValue, getSuggestions, renderSuggestion, pastDays } from './utils';
 import search from '../images/search-icon.png';
 
 import Table from './Table';
@@ -49,15 +49,15 @@ export default class Home extends Component {
 
   async getCountyData() {
     const { value } = this.state;
-    const threeDays = pastThreeDays();
+    const days = pastDays();
     const { data } = await getCurrentCountyCases(value);
     let day = '';
     let prevDay = '';
-    for (let i = 0; i < threeDays.length; i++) {
-      const currDay = threeDays[i];
+    for (let i = 0; i < days.length; i++) {
+      const currDay = days[i];
       if (data[0].timeline.cases[currDay]) {
         day = currDay;
-        prevDay = threeDays[i + 1];
+        prevDay = days[i + 1];
         break;
       }
     }

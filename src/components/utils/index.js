@@ -19,7 +19,7 @@ export const humanDateFormat = (milliseconds) => {
   return dateObject.toLocaleString();
 }
 
-export const pastThreeDays = () => {
+export const pastDays = () => {
   let todaysDate = new Date(),
   month = '' + (todaysDate.getMonth() + 1),
   day = '' + todaysDate.getDate(),
@@ -31,7 +31,7 @@ export const pastThreeDays = () => {
     month = '0' + month;
   if (day.length < 2) 
     day = '0' + day;
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 5; i++) {
     const date = [month, day - i, year].join('/');
     pastThreeDays.push(date);
   }
