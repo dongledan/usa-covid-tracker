@@ -21,7 +21,7 @@ export const humanDateFormat = (milliseconds) => {
 
 export const pastDays = () => {
   const pastDays = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 12; i++) {
     let realDate = new Date(Date.now() - i * 24 * 60 * 60 * 1000),
     month = '' + (realDate.getMonth() + 1),
     day = '' + realDate.getDate(),

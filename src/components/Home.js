@@ -16,6 +16,7 @@ export default class Home extends Component {
       currentState: {},
       currentCounty: [],
       timelineDay: '',
+      prevTimelineWeek: '',
       prevTimelineDay: '',
       value: '',
       suggestions: [],
@@ -56,8 +57,6 @@ export default class Home extends Component {
     const { data } = await getCurrentCountyCases(value);
     let pop = await this.getCountyPop();
 
-
-    // console.log(pop.feed.entry[2].content.$t);
     const filteredData = pop.feed.entry.filter((name, i) => {
       const state = name.content.$t.split(' ');
       const inputState = value.split(' ');
@@ -72,37 +71,45 @@ export default class Home extends Component {
 
       for (let j = i; j < filteredData.length; j++) {
         const censusEntry = filteredData[j].content.$t.split(' ');
+
         if (j % 2 === 1) continue;
-        else if (entry[0] === 'out') break;
         else if (censusEntry[0] > entry[0] && censusEntry[0] !== 'st.') {
           break;
         }
         else if (censusEntry[0] === entry[0]) {
-          data[i]['population'] = filteredData[j + 1].content.$t;
+          // 'san', 'angeles', 'county', 'california vs 'orange', 'county', 'new york' // possible multiple 'los'
+          if (entry.length > 1) {
+            if (censusEntry[1] === entry[1]) data[i]['population'] = filteredData[j + 1].content.$t;
+            else continue;
+          } 
+          else data[i]['population'] = filteredData[j + 1].content.$t;
           break;
         } else data[i]['population'] = 'N/A'
       }
     }    
 
     let day = '';
+    let prevWeek = '';
     let prevDay = '';
     // API data can be stale and checking the past 5 days; finding which days are available in data.timeline.cases[ie '12/25/20'] then getting previous day to perform current cases
     for (let i = 0; i < days.length; i++) {
       const currDay = days[i];
       if (data[0].timeline.cases[currDay]) {
         day = currDay;
+        prevWeek = days[i + 6];
         prevDay = days[i + 1];
         break;
       }
     }
 
     // sorting by most daily cases data.time.cases[12/25/20] - data.time.cases[12/24/20]
+    // sorting by (cases / pop) * 100,000 
     const sortedData = data.sort((a,b) => (
-      (b.timeline.cases[day] - b.timeline.cases[prevDay]) - (a.timeline.cases[day] - a.timeline.cases[prevDay])
+      (((((b.timeline.cases[day] - b.timeline.cases[prevWeek])/7)/parseInt(b.population.replace(/,/g, ''))))*100000) - (((((a.timeline.cases[day] - a.timeline.cases[prevWeek])/7)/parseInt(a.population.replace(/,/g, ''))))*100000)
     ))
     // if state exist, then setState
     if (lowerCaseStates.lastIndexOf(value) >= 0) {
-      this.setState({currentCounty: sortedData, timelineDay: day, prevTimelineDay: prevDay, isLoading: false })
+      this.setState({currentCounty: sortedData, timelineDay: day, prevTimelineDay: prevDay, prevTimelineWeek: prevWeek, isLoading: false })
     }
   }
 
@@ -116,9 +123,9 @@ export default class Home extends Component {
   }
 
   render() {
-    const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay, isLoading } = this.state;
-    const topDaily = currentCounty.slice(0, 15);
-    const botDaily = currentCounty.slice(-15).reverse(); 
+    const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay, isLoading, prevTimelineWeek } = this.state;
+    const topDaily = currentCounty.slice(0, 10);
+    const botDaily = currentCounty.slice(-10).reverse(); 
     const inputProps = {
       placeholder: 'Search for your state',
       value,
@@ -150,7 +157,7 @@ export default class Home extends Component {
         }
         {
           currentCounty.length ?
-            <Table day={timelineDay} prevDay={prevTimelineDay} botDaily={botDaily} topDaily={topDaily} isLoading={isLoading}/>
+            <Table day={timelineDay} prevDay={prevTimelineDay} prevWeek={prevTimelineWeek} botDaily={botDaily} topDaily={topDaily} isLoading={isLoading}/>
           :
             <span />
         }

@@ -3,7 +3,7 @@ import TableBody from './TableBody';
 import Loading from './Loading';
 
 export default function Table(props) {
-  const { day, prevDay, topDaily, botDaily, isLoading } = props;
+  const { day, prevDay, topDaily, botDaily, isLoading, prevWeek } = props;
  
   return (
     <span>
@@ -17,13 +17,17 @@ export default function Table(props) {
             <table className="table">
                 <thead>
                   <tr className="table-header">
-                    <th>County</th>
+                    <th>
+                      <div>County</div>
+                      <div className="pop">Population</div>
+                    </th>
+                    <th>Daily New Cases</th>
                     <th>Cases</th>
                     <th>Deaths</th>
                   </tr>
                 </thead>
                 {topDaily.map((county, i) => (
-                  <TableBody county={county} day={day} prevDay={prevDay} i={i}/>
+                  <TableBody county={county} day={day} prevDay={prevDay} prevWeek={prevWeek} i={i}/>
                 ))}
             </table>
           </div>
@@ -32,13 +36,17 @@ export default function Table(props) {
             <table className="table">
                 <thead>
                   <tr className="table-header">
-                    <th>County</th>
+                  <th>
+                      <div>County</div>
+                      <div className="pop">Population</div>
+                    </th>
+                    <th>Daily New Cases</th>
                     <th>Cases</th>
                     <th>Deaths</th>
                   </tr>
                 </thead>
                 {botDaily.map((county, i) => (
-                  <TableBody county={county} day={day} prevDay={prevDay} i={i} />
+                  <TableBody county={county} day={day} prevDay={prevDay} prevWeek={prevWeek} i={i} />
                 ))}
             </table>
           </div>
