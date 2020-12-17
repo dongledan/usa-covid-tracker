@@ -32,12 +32,8 @@ button {
 }
 
 a {
-  color: #000;
+  color: $blue;
   transition: all 0.2s ease-in;
-
-    &:hover {
-      color: $green;
-    }
 }
 
 .input {
