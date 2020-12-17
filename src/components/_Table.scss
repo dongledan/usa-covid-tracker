@@ -47,5 +47,27 @@
       }
     }
   }
-  
+}
+
+.table-county {
+  display: flex;
+
+  .rank {
+
+  }
+  .county-container {
+    display: flex;
+    flex-direction: column;
+
+    .county {
+      word-break: break-word;
+      white-space: pre-wrap
+    }
+    .pop {
+      margin-left: 10px;
+      font-size: smaller;
+      font-weight: 200;
+      color: rgba(0,0,0,0.5)
+    }
+  }
 }

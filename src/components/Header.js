@@ -7,7 +7,7 @@ export default class Header extends Component {
     super(props);
     this.state = {
       usa: {},
-      world: {}
+      world: {},
     }
   }
 
@@ -27,10 +27,12 @@ export default class Header extends Component {
 
   async getWorldData() {
     const { data } = await getCurrentWorldCases();
-    this.setState({world: data})
+    this.setState({world: data});
   }
+
   render() {
     const { usa, world } = this.state;
+  
     return (
       <div className="header-container">
         <div className="header-title">Spread <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters" rel="noopener noreferrer" target="_blank"><span className="blue">FACTS</span></a>, Not <a href="https://gph.is/g/Zl1QdPK"  rel="noopener noreferrer" target="_blank"><span className="red">COVID</span></a>.</div>

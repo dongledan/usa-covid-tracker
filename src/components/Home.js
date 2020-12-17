@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 
-import { getCurrentStateCases, getCurrentCountyCases } from '../covid-tracking';
+import { getCurrentStateCases, getCurrentCountyCases, getCountyPopulation } from '../covid-tracking';
 import { getSuggestionValue, getSuggestions, renderSuggestion, pastDays, states } from './utils';
 import search from '../images/search-icon.png';
 
@@ -54,6 +54,36 @@ export default class Home extends Component {
     const { value } = this.state;
     const days = pastDays();
     const { data } = await getCurrentCountyCases(value);
+    let pop = await this.getCountyPop();
+
+
+    // console.log(pop.feed.entry[2].content.$t);
+    const filteredData = pop.feed.entry.filter((name, i) => {
+      const state = name.content.$t.split(' ');
+      const inputState = value.split(' ');
+      const prev = i > 0 ? pop.feed.entry[i - 1].content.$t.split(' ') : '';
+      return state[state.length - 1] === inputState[inputState.length - 1] || prev[prev.length - 1] === inputState[inputState.length - 1];
+    });
+
+
+      // [ ".Test", "County,", "State" ];))
+    for (let i = 0; i < data.length; i++) {
+      const entry = data[i].county.split(' ');
+
+      for (let j = i; j < filteredData.length; j++) {
+        const censusEntry = filteredData[j].content.$t.split(' ');
+        if (j % 2 === 1) continue;
+        else if (entry[0] === 'out') break;
+        else if (censusEntry[0] > entry[0] && censusEntry[0] !== 'st.') {
+          break;
+        }
+        else if (censusEntry[0] === entry[0]) {
+          data[i]['population'] = filteredData[j + 1].content.$t;
+          break;
+        } else data[i]['population'] = 'N/A'
+      }
+    }    
+
     let day = '';
     let prevDay = '';
     // API data can be stale and checking the past 5 days; finding which days are available in data.timeline.cases[ie '12/25/20'] then getting previous day to perform current cases
@@ -74,6 +104,15 @@ export default class Home extends Component {
     if (lowerCaseStates.lastIndexOf(value) >= 0) {
       this.setState({currentCounty: sortedData, timelineDay: day, prevTimelineDay: prevDay, isLoading: false })
     }
+  }
+
+  async getCountyPop() {
+    const { data } = await getCountyPopulation();
+
+    // data.feed.entry[0].content.$t = county name 'county', st
+    // data.feed.entry[1].content.$t = county pop
+
+    return data;
   }
 
   render() {
@@ -99,7 +138,7 @@ export default class Home extends Component {
               inputProps={inputProps}
             />
           </div>
-          <button onClick={() => {this.getData(); this.getCountyData()}}>Submit</button>
+          <button onClick={() => {this.getData(); this.getCountyData(); this.getCountyPop()}}>Submit</button>
         </div>
         {
           currentState.state ? 
