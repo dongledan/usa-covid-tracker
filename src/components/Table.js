@@ -1,10 +1,12 @@
 import React from 'react'
+
 import TableBody from './TableBody'
 import Loading from './Loading'
+import News from './News'
 import {useSortableData} from './utils'
 
 export default function Table(props) {
-  const {day, prevDay, topDaily, isLoading, prevWeek} = props
+  const {day, prevDay, topDaily, isLoading, prevWeek, news} = props
   const {items, requestSort, sortConfig} = useSortableData(topDaily)
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -117,6 +119,7 @@ export default function Table(props) {
               </span>
             </div>
           </div>
+          <News news={news} />
         </div>
       )}
     </span>

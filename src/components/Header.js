@@ -39,7 +39,6 @@ export default class Header extends Component {
           Spread{' '}
           <a
             href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters"
-            rel="noopener noreferrer"
             target="_blank"
           >
             <span className="blue">FACTS</span>

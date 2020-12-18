@@ -1,6 +1,6 @@
 .table-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 
   @include mobile {
@@ -9,7 +9,7 @@
   }
 
   .table-rank {
-    width: 60%;
+    width: 50%;
 
     @include mobile {
       width: 100%;
@@ -57,10 +57,10 @@
         }
 
         th:nth-child(1) {
-          width: 27.125%;
+          width: 29.125%;
         }
         th:nth-child(2) {
-          width: 22.125%;
+          width: 20.125%;
           white-space: pre-wrap;
         }
         th:nth-child(3) {
