@@ -84,7 +84,6 @@ export default class Home extends Component {
         prev[prev.length - 1] === inputState[inputState.length - 1]
       )
     })
-    /** CHECK FILTEREDDATA **/
     // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
       const entry = data[i].county.split(' ')
@@ -100,7 +99,7 @@ export default class Home extends Component {
           continue
         } else if (censusEntry[0] === entry[0]) {
           // 'san', 'angeles', 'county', 'california vs 'orange', 'county', 'new york' // possible multiple 'los'
-          if (entry.length > 1) {
+          if (entry.length > 1 && censusEntry.length > 3) {
             if (censusEntry[1] === entry[1])
               data[i]['population'] = filteredData[j + 1].content.$t
             else continue
@@ -131,6 +130,7 @@ export default class Home extends Component {
         county.timeline.deaths[day] - county.timeline.deaths[prevDay]
       county['dailyCases'] = dailyCases
       county['dailyDeaths'] = dailyDeaths
+      // if census population data exist
       if (county.population) {
         const dailyRate = nearestHundredth(
           ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
@@ -140,6 +140,7 @@ export default class Home extends Component {
         )
         county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
       } else {
+        // else populate object keys with N/A values (US territories ex. district of columbia)
         county['population'] = '00'
         county['dailyRate'] = '00'
       }
