@@ -125,19 +125,24 @@ export default class Home extends Component {
     }
     for (let i = 0; i < data.length; i++) {
       const county = data[i]
-      const dailyRate = nearestHundredth(
-        ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
-          7 /
-          parseInt(county.population.replace(/,/g, ''))) *
-          100000
-      )
       const dailyCases =
         county.timeline.cases[day] - county.timeline.cases[prevDay]
       const dailyDeaths =
         county.timeline.deaths[day] - county.timeline.deaths[prevDay]
-      county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
       county['dailyCases'] = dailyCases
       county['dailyDeaths'] = dailyDeaths
+      if (county.population) {
+        const dailyRate = nearestHundredth(
+          ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
+            7 /
+            parseInt(county.population.replace(/,/g, ''))) *
+            100000
+        )
+        county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
+      } else {
+        county['population'] = '00'
+        county['dailyRate'] = '00'
+      }
     }
     // sorting by most daily cases data.time.cases[12/25/20] - data.time.cases[12/24/20]
     // sorting by (cases / pop) * 100,000
