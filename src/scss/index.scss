@@ -81,6 +81,10 @@ strong {
   padding: 5px;
   letter-spacing: 2px;
   border-radius: 5px;
+
+  @include mobile {
+    padding: 3px 5px;
+  }
 }
 
 .date {
@@ -184,14 +188,14 @@ strong {
     position: absolute;
     z-index: 1;
     top: 120%;
-    left: 50%;
+    left: 52%;
     margin-left: -137px;
 
     &:after {
       content: "";
       position: absolute;
       bottom: 100%;
-      left: 50%;
+      left: 52%;
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
@@ -208,11 +212,13 @@ strong {
 .color-container {
   display: flex;
   align-items: center;
+  
   .color {
     height: 16px;
     width: 16px;
     display: inline-block;
     text-align: center;
+    margin-right: 5px;
   }
   .dark-red {
     background: #42100e;

@@ -34,23 +34,9 @@ export default function Table(props) {
                     </button>
                     <th>
                       <button className="naked" type="button" onClick={() => requestSort('dailyRate')}>
-                      <div className="tooltip">
                         <div className="title">
-                          Daily New Cases Rate Per 100k
+                          Daily New Cases Rate Per 100k**
                           <span className={getClassNamesFor('dailyRate')} />
-                        </div>
-                        <span className="tooltiptext">
-                          <span>
-                          • Average number of new cases in the last 7 days per 100,000 residents.
-                          </span>
-                          <div>• Why sort by Daily Rate? </div>
-                          <div>It takes population in account to better compare larger and smaller counties.</div>
-                          <div className="color-container"><div className="color dark-red"></div> Severe outbreak; super danger</div>
-                          <div className="color-container"><div className="color red2"></div> Active outbreak; danger zone</div>
-                          <div className="color-container"><div className="color orange"></div> Moderate outbreak; uh oh</div>
-                          <div className="color-container"><div className="color yellow"></div> Slow growth; not too shabby</div>
-                          <div className="color-container"><div className="color green"></div> On track; gold star </div>
-                        </span>
                       </div>
                       </button>
                     </th>
@@ -78,6 +64,21 @@ export default function Table(props) {
                 ))}
             </table>
             <div className="caption">*Sourced from U.S. Census 2019 estimates</div>
+            <div className="caption tooltip">
+              **Learn more about Daily New Cases Rate
+              <span className="tooltiptext">
+                <span>
+                • Average number of new cases in the last 7 days per 100,000 residents.
+                </span>
+                <div>• Why sort by Daily Rate? </div>
+                <div>It takes population in account to better compare larger and smaller counties.</div>
+                <div className="color-container"><div className="color dark-red"></div> Severe outbreak; super danger</div>
+                <div className="color-container"><div className="color red2"></div> Active outbreak; danger zone</div>
+                <div className="color-container"><div className="color orange"></div> Moderate outbreak; uh oh</div>
+                <div className="color-container"><div className="color yellow"></div> Slow growth; not too shabby</div>
+                <div className="color-container"><div className="color green"></div> On track; gold star </div>
+              </span>
+            </div>
           </div>
         </div>
       }
