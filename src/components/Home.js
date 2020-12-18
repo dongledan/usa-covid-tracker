@@ -56,7 +56,6 @@ export default class Home extends Component {
     const days = pastDays();
     const { data } = await getCurrentCountyCases(value);
     let pop = await this.getCountyPop();
-    let news = await this.getCovidNews();
     const filteredData = pop.feed.entry.filter((name, i) => {
       const state = name.content.$t.split(' ');
       const inputState = value.split(' ');
