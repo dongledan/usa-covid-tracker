@@ -62,19 +62,20 @@ export default class Home extends Component {
       const prev = i > 0 ? pop.feed.entry[i - 1].content.$t.split(' ') : '';
       return state[state.length - 1] === inputState[inputState.length - 1] || prev[prev.length - 1] === inputState[inputState.length - 1];
     });
-
+    /** CHECK FILTEREDDATA **/
     // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
       const entry = data[i].county.split(' ');
 
       for (let j = i; j < filteredData.length; j++) {
         const censusEntry = filteredData[j].content.$t.split(' ');
-
+        console.log(censusEntry, entry, 'what')
         if (j % 2 === 1) continue;
         else if (censusEntry[0] > entry[0] && censusEntry[0] !== 'st.' && censusEntry[0].slice(0,2) !== 'mc') {
-          break;
+          continue;
         }
         else if (censusEntry[0] === entry[0]) {
+
           // 'san', 'angeles', 'county', 'california vs 'orange', 'county', 'new york' // possible multiple 'los'
           if (entry.length > 1) {
             if (censusEntry[1] === entry[1]) data[i]['population'] = filteredData[j + 1].content.$t;
