@@ -27,7 +27,7 @@ export default function Table(props) {
                       <th>
                         <div className="title">
                           County
-                          <span className={getClassNamesFor('dailyCases')} />
+                          <span className={getClassNamesFor('population')} />
                         </div>
                         <div className="pop">Population*</div>
                       </th>
