@@ -73,7 +73,10 @@ export default class Home extends Component {
       let inputState = value.split(' ')
       let prev = i > 0 ? pop.feed.entry[i - 1].content.$t.split(' ') : ''
       // accounting for states with more than one word
-      if ((inputState.length > 1 && state.length > 3) || prev.length > 3) {
+      if (
+        (inputState.length > 1 && state.length > 3) ||
+        (prev.length > 3 && inputState.length > 1)
+      ) {
         state = state[state.length - 2] + ' ' + state[state.length - 1]
         inputState = inputState.join(' ')
         prev = prev[prev.length - 2] + ' ' + prev[prev.length - 1]
@@ -94,9 +97,10 @@ export default class Home extends Component {
         else if (
           censusEntry[0] > entry[0] &&
           censusEntry[0] !== 'st.' &&
-          censusEntry[0].slice(0, 2) !== 'mc'
+          censusEntry[0].slice(0, 2) !== 'mc' &&
+          censusEntry[0] !== 'el'
         ) {
-          continue
+          break
         } else if (censusEntry[0] === entry[0]) {
           // 'san', 'angeles', 'county', 'california vs 'orange', 'county', 'new york' // possible multiple 'los'
           if (entry.length > 1 && censusEntry.length > 3) {
