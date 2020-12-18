@@ -32,7 +32,8 @@
       white-space: nowrap;
       table-layout: fixed;
 
-      td, th {
+      td,
+      th {
         text-align: left;
         padding: 0.75em 0.9em;
       }
@@ -70,7 +71,8 @@
         }
       }
       td {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+          monospace;
       }
     }
   }
@@ -79,7 +81,6 @@
     font-size: smaller;
     color: rgba(0, 0, 0, 0.6);
     margin-top: 5px;
-
   }
 }
 
@@ -96,7 +97,7 @@
 
     .county {
       word-break: break-word;
-      white-space: pre-wrap
+      white-space: pre-wrap;
     }
     .pop {
       margin-left: 10px;
