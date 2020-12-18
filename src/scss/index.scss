@@ -205,4 +205,30 @@ strong {
     }
   }
 }
+.color-container {
+  display: flex;
+  align-items: center;
+  .color {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    text-align: center;
+  }
+  .dark-red {
+    background: #42100e;
+  }
+  .red2 {
+    background: #c72f2b;
+  }
+  .orange {
+    background: #ffa500;
+  }
+  .yellow {
+    background: #ffdb58
+  }
+  .green {
+    background: $green;
+  }
+
+}
 
