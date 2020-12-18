@@ -39,8 +39,10 @@ After all that, it should look like this!
 
 ## TODO
 
-* add %s of positivity rate, per 100k cases, etc.
-* adding news feed related to COVID, information regarding COVID
-* use d3.js to make an interactive map
-* Ability to compare different states and/or counties
-* Add specific guidelines to states
+- [x] add %s of positivity rate, per 100k cases, etc.
+- [x] sortable table
+- [ ] adding news feed related to COVID, information regarding COVID
+- [ ] use d3.js to make an interactive map
+- [x] Ability to compare different states and/or counties
+- [ ] Add specific guidelines to states
+
