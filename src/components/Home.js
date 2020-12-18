@@ -32,11 +32,18 @@ export default class Home extends Component {
       prevTimelineDay: '',
       value: '',
       suggestions: [],
-      topTen: [],
-      botTen: [],
       isLoading: true,
+      news: {},
     }
     this.onChange = this.onChange.bind(this)
+  }
+
+  componentDidMount() {
+    try {
+      this.getCovidNews()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   onChange = (event, {newValue}) => {
@@ -185,7 +192,7 @@ export default class Home extends Component {
 
   async getCovidNews() {
     const {data} = await getCovidNews()
-    return data
+    this.setState({news: data})
   }
 
   render() {
@@ -198,6 +205,7 @@ export default class Home extends Component {
       prevTimelineDay,
       isLoading,
       prevTimelineWeek,
+      news,
     } = this.state
     const topDaily = currentCounty
 
@@ -260,6 +268,7 @@ export default class Home extends Component {
             prevWeek={prevTimelineWeek}
             topDaily={topDaily}
             isLoading={isLoading}
+            news={news}
           />
         ) : (
           <span />

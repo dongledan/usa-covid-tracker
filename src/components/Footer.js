@@ -4,11 +4,7 @@ import mask from '../images/mask.png'
 export default function Footer() {
   return (
     <div className="footer-container">
-      <a
-        href={'https://dannyboy.dev/'}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
+      <a href={'https://dannyboy.dev/'} rel="noreferrer" target="_blank">
         <img
           className="footer-img"
           src={mask}

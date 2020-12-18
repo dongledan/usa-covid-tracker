@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 function App() {
   useEffect(() => {
-    ReactGA.initialize('UA-178028561-3')
+    ReactGA.initialize(process.env.REACT_APP_GOOGLE_UA_ID)
     ReactGA.pageview(window.location.pathname)
   })
   return (

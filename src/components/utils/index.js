@@ -78,7 +78,7 @@ export const useSortableData = (items, config = null) => {
         return 0
       })
     }
-    return sortableItems.slice(0, 15)
+    return sortableItems.slice(0, 10)
   }, [items, sortConfig])
 
   const requestSort = (key) => {

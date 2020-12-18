@@ -1,0 +1,43 @@
+.news-container {
+  display: flex;
+  flex-direction: column;
+  width: 42%;
+  margin: 0 10px;
+  padding: 0.4em 0.9em;
+
+  .headline {
+    font-size: 1.478em;
+    font-weight: 600;
+    margin: 10px 0;
+    text-align: center;
+    color: $red;
+  }
+  .link {
+    line-height: 1.5em;
+    font-size: 1.25em;
+    margin: 5px 0;
+    text-align: justify;
+    font-weight: 500;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 30px;
+    border-radius: 5px;
+
+    .caption {
+      font-size: 0.75em;
+      font-weight: 400;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: -5px;
+
+      .bullet {
+        margin: 0 10px;
+        font-size: x-small;
+      }
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
