@@ -2,6 +2,8 @@
 
 ## Objective
 
+The purpose to build a quick dashboard with easily digestible information. A lot of COVID trackers have waaaay too much numbers; this web app solves the issue by keeping just the facts.
+
 The only thing spreading faster than COVID is misinformation. I built this SPA to simply show what the numbers are in the USA. Specifically individual states and which counties have the most daily cases + deaths. People are dying-- wearing a mask is the absolute bare minimum thing you can do.
 
 ## Tech Stack
