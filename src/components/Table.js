@@ -1,10 +1,17 @@
 import React from 'react';
 import TableBody from './TableBody';
 import Loading from './Loading';
+import { useSortableData} from './utils'
 
 export default function Table(props) {
-  const { day, prevDay, topDaily, botDaily, isLoading, prevWeek } = props;
- 
+  const { day, prevDay, topDaily, isLoading, prevWeek } = props;
+  const { items, requestSort, sortConfig } = useSortableData(topDaily);
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
+  };
   return (
     <span>
     { 
@@ -13,18 +20,25 @@ export default function Table(props) {
       :
         <div className="table-container">
           <div className="table-rank">
-            <div className="table-name">Most Daily Cases</div>
             <table className="table">
                 <thead>
                   <tr className="table-header">
+                    <button className="naked" type="button" onClick={() => requestSort('population')}>
+                      <th>
+                        <div className="title">
+                          County
+                          <span className={getClassNamesFor('population')} />
+                        </div>
+                        <div className="pop">Population*</div>
+                      </th>
+                    </button>
                     <th>
-                      <div>County</div>
-                      <div className="pop">Population*</div>
-                    </th>
-                    <th>
-                    <a className="learn" href="https://covid19.gachd.org/daily-case-rate-per-100000/"  rel="noreferrer noopener" target="_blank">
+                      <button className="naked" type="button" onClick={() => requestSort('dailyRate')}>
                       <div className="tooltip">
-                        Daily New Cases
+                        <div className="title">
+                          Daily New Cases Rate Per 100k
+                          <span className={getClassNamesFor('dailyRate')} />
+                        </div>
                         <span className="tooltiptext">
                           <span>
                           • Average number of new cases in the last 7 days per 100,000 residents.
@@ -38,37 +52,33 @@ export default function Table(props) {
                           <div className="color-container"><div className="color green"></div> On track; gold star </div>
                         </span>
                       </div>
-                      </a>
+                      </button>
                     </th>
-                    <th>Cases</th>
-                    <th>Deaths</th>
+                    <th>
+                      <button className="naked" type="button" onClick={() => requestSort('dailyCases')}>
+                        <div className="title">
+                          Cases
+                          <span className={getClassNamesFor('dailyCases')} />
+                        </div>
+                      </button>
+                    </th>
+                    <th>
+                      <button className="naked" type="button" onClick={() => requestSort('dailyDeaths')}>
+                        <div className="title">
+                          Deaths
+                          <span className={getClassNamesFor('dailyDeaths')} />
+                        </div>
+                      </button>
+                    </th>
+                   
                   </tr>
                 </thead>
-                {topDaily.map((county, i) => (
+                {items.map((county, i) => (
                   <TableBody county={county} day={day} prevDay={prevDay} prevWeek={prevWeek} i={i}/>
                 ))}
             </table>
+            <div className="caption">*Sourced from U.S. Census 2019 estimates</div>
           </div>
-          <div className="table-rank">
-            <div className="table-name">Least Daily Cases</div>
-            <table className="table">
-                <thead>
-                  <tr className="table-header">
-                  <th>
-                      <div>County</div>
-                      <div className="pop">Population*</div>
-                    </th>
-                    <th>Daily New Cases</th>
-                    <th>Cases</th>
-                    <th>Deaths</th>
-                  </tr>
-                </thead>
-                {botDaily.map((county, i) => (
-                  <TableBody county={county} day={day} prevDay={prevDay} prevWeek={prevWeek} i={i} />
-                ))}
-            </table>
-          </div>
-          <div className="caption">*Sourced from U.S. Census 2019 estimates</div>
         </div>
       }
     </span>
