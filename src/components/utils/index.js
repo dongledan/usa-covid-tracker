@@ -21,7 +21,7 @@ export const humanDateFormat = (milliseconds) => {
 
 export const pastDays = () => {
   const pastDays = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 12; i++) {
     let realDate = new Date(Date.now() - i * 24 * 60 * 60 * 1000),
     month = '' + (realDate.getMonth() + 1),
     day = '' + realDate.getDate(),
@@ -33,6 +33,14 @@ export const pastDays = () => {
     pastDays.push(actualDate);
   }
   return pastDays;
+}
+
+export const color = (dailyRate) => {
+  if (dailyRate > 75) return '#42100e';
+  else if (dailyRate <= 75 && dailyRate >25) return '#c72f2b';
+  else if (dailyRate <= 25 && dailyRate > 10) return '#ffa500';
+  else if (dailyRate <= 10 && dailyRate > 1) return '#ffdb58';
+  else return '#4DD787'
 }
 
 export const nearestHundredth = (num) => Math.round(num * 100) / 100;

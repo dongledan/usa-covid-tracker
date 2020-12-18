@@ -8,8 +8,8 @@ describe('humanDateFormat()', () => {
 });
 
 describe('pastDays()', () => {
-  it('returns an array with 5 days', () => {
-    expect(pastDays().length).toEqual(5);
+  it('returns an array with 12 days', () => {
+    expect(pastDays().length).toEqual(12);
   });
 
   it('returns in a MM/DD/YY format or a total length of 8', () => {

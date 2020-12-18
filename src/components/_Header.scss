@@ -21,6 +21,7 @@
     background: $red;
     padding: 40px;
     border-radius: 5px;
+    color: #fff;
     
     .header-subtitle {
       font-size: 2em;
@@ -42,47 +43,51 @@
       }
     }
     
-    .tooltip {
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      border-bottom: 2px dotted black;
-    }
-    
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      min-width: 250px;
-      font-size: small;
-      background-color: $black;
-      color: #fff;
-      border-radius: 5px;
-      padding: 15px;
-      position: absolute;
-      z-index: 1;
-      top: 120%;
-      left: 50%;
-      margin-left: -137px;
-    }
-    
-    .tooltip .tooltiptext::after {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent $black transparent;
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-    }
-
     .header-caption {
       font-size: small;
       margin: 5px 0;
     }
   }
- 
+}
+
+.gif {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: $red;
+
+  .gif-pop{
+    visibility: hidden;
+    min-width: 250px;
+    min-height: 130px;
+    font-size: small;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: contain;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: 50%;
+    margin-left: -137px;
+
+    @include mobile {
+      left: 150%;
+    }
+  }
+
+  .leadership {
+    background-image: url('https://media.giphy.com/media/QugbVmA8EPmhNlmRKU/giphy-downsized-large.gif');
+  }
+
+  .currently {
+    background-image: url('https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif');
+  }
+
+  &:hover {
+    .gif-pop {
+      visibility: visible;
+    }
+  }
 }
