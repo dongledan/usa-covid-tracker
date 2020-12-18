@@ -71,7 +71,7 @@ export default class Home extends Component {
         const censusEntry = filteredData[j].content.$t.split(' ');
 
         if (j % 2 === 1) continue;
-        else if (censusEntry[0] > entry[0] && censusEntry[0] !== 'st.') {
+        else if (censusEntry[0] > entry[0] && censusEntry[0] !== 'st.' && censusEntry[0].slice(0,2) !== 'mc') {
           break;
         }
         else if (censusEntry[0] === entry[0]) {
