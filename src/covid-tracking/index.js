@@ -20,3 +20,6 @@ export const getCurrentCountyCases = (state) => axios.get(`https://disease.sh/v3
 
 // county population
 export const getCountyPopulation = () => axios.get(`https://spreadsheets.google.com/feeds/cells/1OOg_v8No2ZLqOJi8SB2YNjeBoRyoB8O2MuNRafTvOfI/1/public/full?alt=json`, {headers});
+
+// current USA news on COVID
+export const getCovidNews = () => axios.get(`https://api.covidnow.com/v1/news/usa`, {headers})

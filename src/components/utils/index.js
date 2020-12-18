@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
@@ -40,10 +42,48 @@ export const color = (dailyRate) => {
   else if (dailyRate <= 75 && dailyRate >25) return '#c72f2b';
   else if (dailyRate <= 25 && dailyRate > 10) return '#ffa500';
   else if (dailyRate <= 10 && dailyRate > 1) return '#ffdb58';
+  else if (dailyRate.toString() === '00') return '#ECA9A7';
   else return '#4DD787'
 }
 
 export const nearestHundredth = (num) => Math.round(num * 100) / 100;
+
+export const useSortableData = (items, config = null) => {
+  const [sortConfig, setSortConfig] = React.useState(config);
+
+  const sortedItems = React.useMemo(() => {
+    let sortableItems = [...items];
+    if (sortConfig !== null) {
+      sortableItems.sort((a, b) => { 
+        if (sortConfig.key === 'population') {
+          if (parseInt(a[sortConfig.key].replace(/,/g, '')) < parseInt(b[sortConfig.key].replace(/,/g, ''))) {
+            return sortConfig.direction === 'ascending' ? -1 : 1;
+          }
+          if (parseInt(a[sortConfig.key].replace(/,/g, '')) > parseInt(b[sortConfig.key].replace(/,/g, ''))) {
+            return sortConfig.direction === 'ascending' ? 1 : -1;
+          }
+
+        }
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableItems.slice(0, 15);
+  }, [items, sortConfig]);
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if ( sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending')direction = 'descending';
+    setSortConfig({ key, direction });
+  };
+
+  return { items: sortedItems, requestSort, sortConfig };
+};
 
 export const states =  [
   "Alabama",

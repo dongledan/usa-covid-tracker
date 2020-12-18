@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
 
-import { getCurrentStateCases, getCurrentCountyCases, getCountyPopulation } from '../covid-tracking';
-import { getSuggestionValue, getSuggestions, renderSuggestion, pastDays, states } from './utils';
+import { getCurrentStateCases, getCurrentCountyCases, getCountyPopulation, getCovidNews } from '../covid-tracking';
+import { getSuggestionValue, getSuggestions, renderSuggestion, pastDays, states, nearestHundredth } from './utils';
 import search from '../images/search-icon.png';
 
 import Table from './Table';
@@ -56,7 +56,7 @@ export default class Home extends Component {
     const days = pastDays();
     const { data } = await getCurrentCountyCases(value);
     let pop = await this.getCountyPop();
-
+    let news = await this.getCovidNews();
     const filteredData = pop.feed.entry.filter((name, i) => {
       const state = name.content.$t.split(' ');
       const inputState = value.split(' ');
@@ -64,8 +64,7 @@ export default class Home extends Component {
       return state[state.length - 1] === inputState[inputState.length - 1] || prev[prev.length - 1] === inputState[inputState.length - 1];
     });
 
-
-      // [ ".Test", "County,", "State" ];))
+    // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
       const entry = data[i].county.split(' ');
 
@@ -84,7 +83,7 @@ export default class Home extends Component {
           } 
           else data[i]['population'] = filteredData[j + 1].content.$t;
           break;
-        } else data[i]['population'] = 'N/A'
+        } else data[i]['population'] = '00';
       }
     }    
 
@@ -100,8 +99,16 @@ export default class Home extends Component {
         prevDay = days[i + 1];
         break;
       }
+    } 
+    for (let i = 0; i < data.length; i++) {
+      const county = data[i];
+      const dailyRate = nearestHundredth((((county.timeline.cases[day] - county.timeline.cases[prevWeek])/7)/parseInt(county.population.replace(/,/g, '')))*100000);
+      const dailyCases = county.timeline.cases[day] - county.timeline.cases[prevDay];
+      const dailyDeaths = county.timeline.deaths[day] - county.timeline.deaths[prevDay]
+      county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : "00";
+      county['dailyCases'] = dailyCases;
+      county['dailyDeaths'] = dailyDeaths;
     }
-
     // sorting by most daily cases data.time.cases[12/25/20] - data.time.cases[12/24/20]
     // sorting by (cases / pop) * 100,000 
     const sortedData = data.sort((a,b) => (
@@ -113,19 +120,26 @@ export default class Home extends Component {
     }
   }
 
+  
+
   async getCountyPop() {
     const { data } = await getCountyPopulation();
 
-    // data.feed.entry[0].content.$t = county name 'county', st
-    // data.feed.entry[1].content.$t = county pop
+    // data.feed.entry[1].content.$t = county name 'county', st
+    // data.feed.entry[2].content.$t = county pop
 
+    return data;
+  }
+
+  async getCovidNews() {
+    const { data } = await getCovidNews();
     return data;
   }
 
   render() {
     const { value, currentState, suggestions, currentCounty, timelineDay, prevTimelineDay, isLoading, prevTimelineWeek } = this.state;
-    const topDaily = currentCounty.slice(0, 10);
-    const botDaily = currentCounty.slice(-10).reverse(); 
+    const topDaily = currentCounty
+
     const inputProps = {
       placeholder: 'Search for your state',
       value,
@@ -157,7 +171,7 @@ export default class Home extends Component {
         }
         {
           currentCounty.length ?
-            <Table day={timelineDay} prevDay={prevTimelineDay} prevWeek={prevTimelineWeek} botDaily={botDaily} topDaily={topDaily} isLoading={isLoading}/>
+            <Table day={timelineDay} prevDay={prevTimelineDay} prevWeek={prevTimelineWeek} topDaily={topDaily} isLoading={isLoading}/>
           :
             <span />
         }
