@@ -35,6 +35,14 @@ export const pastDays = () => {
   return pastDays;
 }
 
+export const color = (dailyRate) => {
+  if (dailyRate > 75) return '#42100e';
+  else if (dailyRate <= 75 && dailyRate >25) return '#c72f2b';
+  else if (dailyRate <= 25 && dailyRate > 10) return '#ffa500';
+  else if (dailyRate <= 10 && dailyRate > 1) return '#ffdb58';
+  else return '#4DD787'
+}
+
 export const nearestHundredth = (num) => Math.round(num * 100) / 100;
 
 export const states =  [

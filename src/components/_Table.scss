@@ -43,9 +43,12 @@
 
       thead {
         background: $blue;
-        color: #fff;
         width: 100%;
         letter-spacing: -0.5px;
+
+        .learn {
+          color: #000;
+        }
 
         th {
           min-width: 110px;
@@ -53,7 +56,7 @@
 
           .pop {
             font-size: smaller;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             margin-top: 5px;
           }
         }
@@ -78,6 +81,12 @@
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
       }
     }
+  }
+  .caption {
+    font-weight: 200;
+    font-size: smaller;
+    color: rgba(0, 0, 0, 0.6);
+
   }
 }
 

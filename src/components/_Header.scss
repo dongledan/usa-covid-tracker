@@ -43,45 +43,6 @@
       }
     }
     
-    .tooltip {
-      position: relative;
-      cursor: pointer;
-      display: inline-block;
-      border-bottom: 2px dotted black;
-
-      .tooltiptext {
-        visibility: hidden;
-        min-width: 250px;
-        font-size: small;
-        background-color: $black;
-        color: #fff;
-        border-radius: 5px;
-        padding: 15px;
-        position: absolute;
-        z-index: 1;
-        top: 120%;
-        left: 50%;
-        margin-left: -137px;
-
-        &:after {
-          content: "";
-          position: absolute;
-          bottom: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: transparent transparent $black transparent;
-        }
-      }
-
-      &:hover {
-        .tooltiptext {
-          visibility: visible;
-        }
-      }
-    }
-
     .header-caption {
       font-size: small;
       margin: 5px 0;

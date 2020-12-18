@@ -25,19 +25,27 @@ button {
   outline: none;
   padding: 15px 30px;
   border-radius: 5px;
-  margin: 0 20px;
   background: $green;
   color: #fff;
   cursor: pointer;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 a {
   color: $blue;
-  transition: all 0.2s ease-in;
+}
+
+strong {
+  color: $base;
 }
 
 .input {
   display: flex;
+  margin-right: 20px;
   max-width: 315px;
   background: #F1C2C1;
   border: none;
@@ -144,3 +152,57 @@ a {
 .react-autosuggest__suggestion--highlighted {
   text-decoration: underline;
 }
+
+.background {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in;
+  cursor: default;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  font-style: italic;
+
+  .tooltiptext {
+    visibility: hidden;
+    font-style: normal;
+    min-width: 250px;
+    font-size: small;
+    background-color: $black;
+    color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    line-height: 2em;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    left: 50%;
+    margin-left: -137px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent $black transparent;
+    }
+  }
+
+  &:hover {
+    .tooltiptext {
+      visibility: visible;
+    }
+  }
+}
+

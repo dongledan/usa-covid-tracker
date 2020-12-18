@@ -19,9 +19,20 @@ export default function Table(props) {
                   <tr className="table-header">
                     <th>
                       <div>County</div>
-                      <div className="pop">Population</div>
+                      <div className="pop">Population*</div>
                     </th>
-                    <th>Daily New Cases</th>
+                    <th>
+                    <a className="learn" href="https://covid19.gachd.org/daily-case-rate-per-100000/"  rel="noreferrer noopener" target="_blank">
+                      <div className="tooltip">
+                        Daily New Cases
+                        <span className="tooltiptext">
+                          <span>
+                            Average number of new cases in the last 7 days per 100,000 residents. <strong>The higher the rate, the more likely you are exposed</strong>.
+                          </span>
+                        </span>
+                      </div>
+                      </a>
+                    </th>
                     <th>Cases</th>
                     <th>Deaths</th>
                   </tr>
@@ -38,7 +49,7 @@ export default function Table(props) {
                   <tr className="table-header">
                   <th>
                       <div>County</div>
-                      <div className="pop">Population</div>
+                      <div className="pop">Population*</div>
                     </th>
                     <th>Daily New Cases</th>
                     <th>Cases</th>
@@ -50,6 +61,7 @@ export default function Table(props) {
                 ))}
             </table>
           </div>
+          <div className="caption">*Sourced from U.S. Census 2019 estimates</div>
         </div>
       }
     </span>
