@@ -64,14 +64,21 @@ export default class Home extends Component {
   }
 
   async getCountyData() {
-    const {value} = this.state
-    const days = pastDays()
+    const {value} = this.state // user input
+    const days = pastDays() // returns array of past week
     const {data} = await getCurrentCountyCases(value)
     let pop = await this.getCountyPop()
     const filteredData = pop.feed.entry.filter((name, i) => {
-      const state = name.content.$t.split(' ')
-      const inputState = value.split(' ')
-      const prev = i > 0 ? pop.feed.entry[i - 1].content.$t.split(' ') : ''
+      let state = name.content.$t.split(' ')
+      let inputState = value.split(' ')
+      let prev = i > 0 ? pop.feed.entry[i - 1].content.$t.split(' ') : ''
+      // accounting for states with more than one word
+      if ((inputState.length > 1 && state.length > 3) || prev.length > 3) {
+        state = state[state.length - 2] + ' ' + state[state.length - 1]
+        inputState = inputState.join(' ')
+        prev = prev[prev.length - 2] + ' ' + prev[prev.length - 1]
+        return state === inputState || prev === inputState
+      }
       return (
         state[state.length - 1] === inputState[inputState.length - 1] ||
         prev[prev.length - 1] === inputState[inputState.length - 1]
@@ -84,7 +91,6 @@ export default class Home extends Component {
 
       for (let j = i; j < filteredData.length; j++) {
         const censusEntry = filteredData[j].content.$t.split(' ')
-        console.log(censusEntry, entry, 'what')
         if (j % 2 === 1) continue
         else if (
           censusEntry[0] > entry[0] &&

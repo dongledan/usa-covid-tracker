@@ -22,23 +22,23 @@ export default function Table(props) {
             <table className="table">
               <thead>
                 <tr className="table-header">
-                  <button
-                    className="naked"
-                    type="button"
-                    onClick={() => requestSort('population')}
-                  >
-                    <th>
+                  <th>
+                    <button
+                      className="naked"
+                      type="button"
+                      onClick={() => requestSort('population')}
+                    >
                       <div className="title">
                         County
                         <span className={getClassNamesFor('population')} />
                       </div>
                       <div className="pop">Population*</div>
-                    </th>
-                  </button>
+                    </button>
+                  </th>
+
                   <th>
                     <button
                       className="naked"
-                      type="button"
                       onClick={() => requestSort('dailyRate')}
                     >
                       <div className="title">
@@ -50,7 +50,6 @@ export default function Table(props) {
                   <th>
                     <button
                       className="naked"
-                      type="button"
                       onClick={() => requestSort('dailyCases')}
                     >
                       <div className="title">
@@ -62,7 +61,6 @@ export default function Table(props) {
                   <th>
                     <button
                       className="naked"
-                      type="button"
                       onClick={() => requestSort('dailyDeaths')}
                     >
                       <div className="title">
