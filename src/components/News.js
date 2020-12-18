@@ -9,7 +9,7 @@ export default function News(props) {
       {sortedNews.map((recent) => (
         <div key={recent}>
           <div className="link">
-            <a href={news[recent].link} target="_blank">
+            <a href={news[recent].link} rel="noreferrer" target="_blank">
               {news[recent].title}
             </a>
             <div className="caption">
