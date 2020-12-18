@@ -73,7 +73,7 @@ export const useSortableData = (items, config = null) => {
         return 0;
       });
     }
-    return sortableItems.slice(0, 10);
+    return sortableItems.slice(0, 15);
   }, [items, sortConfig]);
 
   const requestSort = (key) => {
