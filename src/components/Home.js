@@ -99,9 +99,14 @@ export default class Home extends Component {
 
       for (let j = i; j < filteredData.length; j++) {
         const censusEntry = filteredData[j].content.$t.split(' ')
+        const nextCensusEntry = filteredData[j + 2]
+          ? filteredData[j + 2].content.$t.split(' ')
+          : ''
+
         if (j % 2 === 1) continue
         else if (
           censusEntry[0] > entry[0] &&
+          nextCensusEntry[0] > entry[0] &&
           censusEntry[0] !== 'st.' &&
           censusEntry[0].slice(0, 2) !== 'mc' &&
           censusEntry[0] !== 'el'
