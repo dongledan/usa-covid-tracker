@@ -80,6 +80,7 @@ strong {
     float: left;
     resize: none;
     flex: 1;
+    z-index: 2;
   }
 
   input {
@@ -91,6 +92,7 @@ strong {
     z-index: 10;
     flex: 1;
     resize: none;
+    position: relative;
   }
 }
 
@@ -271,6 +273,11 @@ strong {
   .pop {
     color: rgba(0, 0, 0, 0.75);
     margin-top: 5px;
+    font-size: 1em;
+
+    @include mobile {
+      font-size: 0.85em;
+    }
   }
 
   .ascending,
@@ -285,6 +292,10 @@ strong {
     font-style: normal;
     display: inline-block;
     margin: -3px 0 auto 0;
+
+    @include mobile {
+      font-size: 0.9em;
+    }
   }
 
   .descending::after {
@@ -293,5 +304,9 @@ strong {
     font-style: normal;
     display: inline-block;
     margin: -5px 0 auto 0;
+
+    @include mobile {
+      font-size: 0.9em;
+    }
   }
 }
