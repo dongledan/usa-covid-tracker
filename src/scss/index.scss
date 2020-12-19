@@ -21,8 +21,18 @@ html {
 
 body {
   scroll-behavior: smooth;
-  margin: auto;
+  margin: 0 auto;
   background: $base;
+  max-width: 1040px;
+  padding: 0 1.0875rem 1.45rem;
+}
+
+html,
+body {
+  @include mobile {
+    overflow-x: hidden;
+    padding: 0 5px;
+  }
 }
 
 button {
@@ -158,14 +168,17 @@ strong {
 }
 
 .background {
-  background: rgba(0, 0, 0, 0.2);
   padding: 5px;
   border-radius: 5px;
-  transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
   cursor: default;
+  color: #fff;
+  font-weight: 500;
+  min-width: 40px;
+  opacity: 0.9;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.3);
+    color: #000;
   }
 }
 
@@ -221,10 +234,10 @@ strong {
     margin-right: 5px;
   }
   .dark-red {
-    background: #42100e;
+    background: #7f0000;
   }
   .red2 {
-    background: #c72f2b;
+    background: $red;
   }
   .orange {
     background: #ffa500;
@@ -251,24 +264,34 @@ strong {
     text-align: left;
     letter-spacing: -0.5px;
 
-    .ascending::after {
-      content: '▴';
-      font-style: normal;
-      transform: rotate(180deg);
-      display: inline-block;
-      margin-left: 5px;
-    }
-
-    .descending::after {
-      content: '▴';
-      font-style: normal;
-      display: inline-block;
-      margin-left: 5px;
+    @include mobile {
+      font-size: 0.9em;
     }
   }
   .pop {
-    font-size: small;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.75);
     margin-top: 5px;
+  }
+
+  .ascending,
+  .descending {
+    text-align: left;
+  }
+
+  .ascending::after {
+    content: '▴';
+    transform: rotate(180deg);
+    font-size: 1.3em;
+    font-style: normal;
+    display: inline-block;
+    margin: -3px 0 auto 0;
+  }
+
+  .descending::after {
+    content: '▴';
+    font-size: 1.3em;
+    font-style: normal;
+    display: inline-block;
+    margin: -5px 0 auto 0;
   }
 }

@@ -30,11 +30,12 @@ export default function Table(props) {
                       type="button"
                       onClick={() => requestSort('population')}
                     >
-                      <div className="title">
-                        County
-                        <span className={getClassNamesFor('population')} />
-                      </div>
+                      <div className="title">County</div>
                       <div className="pop">Population*</div>
+                      <div
+                        className={getClassNamesFor('population')}
+                        style={{minHeight: '1.4em'}}
+                      />
                     </button>
                   </th>
 
@@ -45,8 +46,11 @@ export default function Table(props) {
                     >
                       <div className="title">
                         Daily New Cases Rate Per 100k**
-                        <span className={getClassNamesFor('dailyRate')} />
                       </div>
+                      <div
+                        className={getClassNamesFor('dailyRate')}
+                        style={{minHeight: '1.4em'}}
+                      />
                     </button>
                   </th>
                   <th>
@@ -54,10 +58,11 @@ export default function Table(props) {
                       className="naked"
                       onClick={() => requestSort('dailyCases')}
                     >
-                      <div className="title">
-                        Cases
-                        <span className={getClassNamesFor('dailyCases')} />
-                      </div>
+                      <div className="title">Cases</div>
+                      <div
+                        className={getClassNamesFor('dailyCases')}
+                        style={{minHeight: '1.4em'}}
+                      />
                     </button>
                   </th>
                   <th>
@@ -65,10 +70,11 @@ export default function Table(props) {
                       className="naked"
                       onClick={() => requestSort('dailyDeaths')}
                     >
-                      <div className="title">
-                        Deaths
-                        <span className={getClassNamesFor('dailyDeaths')} />
-                      </div>
+                      <div className="title">Deaths</div>
+                      <div
+                        className={getClassNamesFor('dailyDeaths')}
+                        style={{minHeight: '1.4em'}}
+                      />
                     </button>
                   </th>
                 </tr>

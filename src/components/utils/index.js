@@ -38,11 +38,11 @@ export const pastDays = () => {
 }
 
 export const color = (dailyRate) => {
-  if (dailyRate > 75) return '#42100e'
+  if (dailyRate > 75) return '#7F0000'
   else if (dailyRate <= 75 && dailyRate > 25) return '#c72f2b'
   else if (dailyRate <= 25 && dailyRate > 10) return '#ffa500'
   else if (dailyRate <= 10 && dailyRate > 1) return '#ffdb58'
-  else if (dailyRate.toString() === '00') return '#ECA9A7'
+  else if (dailyRate.toString() === '00') return ''
   else return '#4DD787'
 }
 

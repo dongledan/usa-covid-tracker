@@ -32,10 +32,14 @@
       white-space: nowrap;
       table-layout: fixed;
 
-      td,
-      th {
+      td {
         text-align: left;
         padding: 0.75em 0.9em;
+      }
+
+      th {
+        text-align: left;
+        padding: 0.75em 0.9em 0 0.9em;
       }
 
       tbody:nth-child(odd) {
@@ -57,17 +61,17 @@
         }
 
         th:nth-child(1) {
-          width: 29.125%;
+          width: 30.625%;
         }
         th:nth-child(2) {
-          width: 20.125%;
+          width: 21.525%;
           white-space: pre-wrap;
         }
         th:nth-child(3) {
           width: 18.125%;
         }
         th:nth-child(4) {
-          width: 18.125%;
+          width: 15.125%;
         }
       }
       td {

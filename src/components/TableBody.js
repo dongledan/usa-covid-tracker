@@ -16,11 +16,11 @@ export default function TableBody(props) {
             </div>
           </div>
         </td>
-        <td
-          style={{color: `${color(county.dailyRate)}`, fontWeight: '600'}}
-          className="margin"
-        >
-          <span className="background">
+        <td className="margin">
+          <span
+            className="background"
+            style={{background: `${color(county.dailyRate)}`}}
+          >
             {county.population !== '00' ? county.dailyRate : 'N/A'}
           </span>
         </td>
