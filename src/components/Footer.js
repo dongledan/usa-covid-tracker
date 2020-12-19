@@ -12,7 +12,15 @@ export default function Footer() {
         />
       </a>
       <div className="footer-text">
-        Please wear a <span className="blue">mask</span>.
+        Please wear a{' '}
+        <a
+          href="https://www.ucsf.edu/news/2020/06/417906/still-confused-about-masks-heres-science-behind-how-face-masks-prevent"
+          rel="noreferrer"
+          target="_blank"
+        >
+          mask
+        </a>
+        .
       </div>
     </div>
   )
