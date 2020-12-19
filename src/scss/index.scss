@@ -50,7 +50,7 @@ strong {
 
 .input {
   display: flex;
-  margin-right: 20px;
+  margin-right: 10px;
   max-width: 315px;
   background: #f1c2c1;
   border: none;
@@ -73,7 +73,7 @@ strong {
     background: none;
     outline: none;
     border: none;
-    width: 100%;
+    width: 80%;
     margin: 0 10px;
   }
 }
@@ -110,6 +110,7 @@ strong {
 
 .react-autosuggest__container {
   position: relative;
+  width: 100%;
 }
 
 .react-autosuggest__input {
