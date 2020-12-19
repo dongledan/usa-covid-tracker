@@ -60,6 +60,7 @@ strong {
   line-height: 1.5em;
   align-items: center;
   border-radius: 5px;
+  position: relative;
 
   .search-icon {
     height: 16px;
@@ -75,6 +76,7 @@ strong {
     border: none;
     width: 80%;
     margin: 0 10px;
+    z-index: 10;
   }
 }
 
@@ -110,25 +112,11 @@ strong {
 
 .react-autosuggest__container {
   position: relative;
-  width: 100%;
-}
-
-.react-autosuggest__input {
-  border: none;
-  border-radius: 4px;
-}
-
-.react-autosuggest__input--focused {
-  outline: none;
 }
 
 .react-autosuggest__input--open {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.react-autosuggest__suggestions-container {
-  display: none;
 }
 
 .react-autosuggest__suggestions-container--open {
@@ -158,7 +146,7 @@ strong {
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: 10px 10px;
+  padding: 10px;
 }
 
 .react-autosuggest__suggestion--highlighted {
