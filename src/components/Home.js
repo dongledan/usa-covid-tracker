@@ -36,6 +36,7 @@ export default class Home extends Component {
       news: {},
     }
     this.onChange = this.onChange.bind(this)
+    this.onSuggestionSelected = this.onSuggestionSelected.bind(this)
   }
 
   componentDidMount() {
@@ -64,14 +65,12 @@ export default class Home extends Component {
     })
   }
 
-  async getData() {
-    const {value} = this.state
+  async getData(value) {
     const {data} = await getCurrentStateCases(value)
     this.setState({currentState: data, isLoading: true, currentCounty: [0]})
   }
 
-  async getCountyData() {
-    const {value} = this.state // user input
+  async getCountyData(value) {
     const days = pastDays() // returns array of past week
     const {data} = await getCurrentCountyCases(value)
     let pop = await this.getCountyPop()
@@ -195,6 +194,14 @@ export default class Home extends Component {
     this.setState({news: data})
   }
 
+  async onSuggestionSelected(event, {suggestion, suggestionValue}) {
+    if (event.type === 'click' || event.type === 'keydown') {
+      this.getData(suggestionValue)
+      this.getCountyData(suggestionValue)
+      this.getCountyPop()
+    } else return
+  }
+
   render() {
     const {
       value,
@@ -228,19 +235,11 @@ export default class Home extends Component {
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
               getSuggestionValue={getSuggestionValue}
+              onSuggestionSelected={this.onSuggestionSelected}
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
             />
           </div>
-          <button
-            onClick={() => {
-              this.getData()
-              this.getCountyData()
-              this.getCountyPop()
-            }}
-          >
-            Submit
-          </button>
         </div>
         {currentState.state ? (
           <div className="data-container">

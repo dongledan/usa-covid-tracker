@@ -60,6 +60,7 @@ strong {
   line-height: 1.5em;
   align-items: center;
   border-radius: 5px;
+  position: relative;
 
   .search-icon {
     height: 16px;
@@ -67,6 +68,8 @@ strong {
     opacity: 0.6;
     margin-top: -2px;
     float: left;
+    resize: none;
+    flex: 1;
   }
 
   input {
@@ -75,6 +78,9 @@ strong {
     border: none;
     width: 80%;
     margin: 0 10px;
+    z-index: 10;
+    flex: 1;
+    resize: none;
   }
 }
 
@@ -110,25 +116,11 @@ strong {
 
 .react-autosuggest__container {
   position: relative;
-  width: 100%;
-}
-
-.react-autosuggest__input {
-  border: none;
-  border-radius: 4px;
-}
-
-.react-autosuggest__input--focused {
-  outline: none;
 }
 
 .react-autosuggest__input--open {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.react-autosuggest__suggestions-container {
-  display: none;
 }
 
 .react-autosuggest__suggestions-container--open {
@@ -137,11 +129,11 @@ strong {
   max-width: 315px;
   width: 100%;
   top: 30px;
-  left: -25px;
+  left: -26px;
   border: none;
   color: #000;
   padding-left: 27px;
-  padding-right: 8px;
+  padding-right: 8.5px;
   background: #f1c2c1;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -158,7 +150,7 @@ strong {
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: 10px 10px;
+  padding: 10px;
 }
 
 .react-autosuggest__suggestion--highlighted {

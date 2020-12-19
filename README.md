@@ -22,9 +22,11 @@ Data was receieved by the [Worldometer API](https://www.worldometers.info/) & [J
 ### To run project
 
 #### `npm install`
+
 To install the necessary packages used in the project.
 
 #### `npm start`
+
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 
@@ -41,8 +43,7 @@ After all that, it should look like this!
 
 - [x] add %s of positivity rate, per 100k cases, etc.
 - [x] sortable table
-- [ ] adding news feed related to COVID, information regarding COVID
+- [x] adding news feed related to COVID, information regarding COVID
 - [ ] use d3.js to make an interactive map
 - [x] Ability to compare different states and/or counties
 - [ ] Add specific guidelines to states
-
