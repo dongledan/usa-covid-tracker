@@ -220,17 +220,19 @@ strong {
       border-style: solid;
       border-color: transparent transparent $black transparent;
     }
-  }
-
-  .two {
     @include mobile {
-      left: 60%;
+      overflow: hidden;
     }
   }
 
   &:hover {
     .tooltiptext {
       visibility: visible;
+
+      @include mobile {
+        overflow: hidden;
+        visibility: hidden;
+      }
     }
   }
 }
