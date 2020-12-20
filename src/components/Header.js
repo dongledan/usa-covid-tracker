@@ -60,10 +60,11 @@ export default class Header extends Component {
             by the <span className="date">numbers:</span>
           </div>
           <div className="header-data">
-            <span className="number">{usa.cases}</span> people were infected.
+            - <span className="number">{usa.cases}</span> people were infected.{' '}
+            <span className="number">+{usa.todayCases}</span> new cases.
           </div>
           <div className="header-data">
-            <span className="number">{usa.deaths}</span> people have{' '}
+            - <span className="number">{usa.deaths}</span> people have{' '}
             <div className="tooltip">
               died{' '}
               <span className="tooltiptext">
@@ -81,9 +82,10 @@ export default class Header extends Component {
                 more than WWI.
               </span>
             </div>
-            .
+            . <span className="number">+{usa.todayDeaths}</span> new deaths.
           </div>
           <div className="header-data">
+            -{' '}
             <span className="number">
               {nearestHundredth(usa.cases / world.cases) * 100}%
             </span>{' '}
@@ -96,6 +98,25 @@ export default class Header extends Component {
           <div className="header-caption">
             Last updated on{' '}
             <span className="date">{humanDateFormat(usa.updated)}</span>
+          </div>
+          <div className="sources">
+            All covid data sourced from{' '}
+            <a
+              href="https://www.worldometers.info/coronavirus/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Worldometers
+            </a>{' '}
+            &{' '}
+            <a
+              href="https://coronavirus.jhu.edu/data"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Johns Hopkins University
+            </a>
+            .
           </div>
         </div>
       </div>
