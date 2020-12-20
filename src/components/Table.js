@@ -125,7 +125,7 @@ export default function Table(props) {
               </span>
             </div>
           </div>
-          <News news={news} />
+          {news.length ? <News news={news} /> : <span />}
         </div>
       )}
     </span>
