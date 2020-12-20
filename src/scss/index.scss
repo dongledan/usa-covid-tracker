@@ -28,6 +28,7 @@ body {
 }
 
 // testing containers
+
 // *{
 //   outline: 1px solid red;
 //  }
@@ -64,7 +65,6 @@ strong {
 
 .input {
   display: flex;
-  margin-right: 10px;
   max-width: 315px;
   background: #f1c2c1;
   border: none;
@@ -220,19 +220,16 @@ strong {
       border-style: solid;
       border-color: transparent transparent $black transparent;
     }
+  }
+  .two {
     @include mobile {
-      overflow: hidden;
+      left: 60%;
     }
   }
 
   &:hover {
     .tooltiptext {
       visibility: visible;
-
-      @include mobile {
-        overflow: hidden;
-        visibility: hidden;
-      }
     }
   }
 }
