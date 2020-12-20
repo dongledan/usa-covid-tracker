@@ -60,6 +60,7 @@ strong {
 
 .input {
   display: flex;
+  margin-right: 10px;
   max-width: 315px;
   background: #f1c2c1;
   border: none;
@@ -90,6 +91,7 @@ strong {
     margin: 0 10px;
     z-index: 10;
     flex: 1;
+    resize: none;
     position: relative;
   }
 }
@@ -126,8 +128,6 @@ strong {
 
 .react-autosuggest__container {
   position: relative;
-  width: 100%;
-  display: inline-flex;
 }
 
 .react-autosuggest__input--open {
