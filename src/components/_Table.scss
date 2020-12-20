@@ -1,6 +1,6 @@
 .table-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 
   @include mobile {
@@ -10,6 +10,7 @@
 
   .table-rank {
     width: 50%;
+    margin: 0 10px;
 
     @include mobile {
       width: 100%;

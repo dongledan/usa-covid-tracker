@@ -27,10 +27,15 @@ body {
   padding: 0 1.0875rem 1.45rem;
 }
 
+// testing containers
+
+// *{
+//   outline: 1px solid red;
+//  }
+
 html,
 body {
   @include mobile {
-    overflow-x: hidden;
     padding: 0 5px;
   }
 }
@@ -60,7 +65,6 @@ strong {
 
 .input {
   display: flex;
-  margin-right: 10px;
   max-width: 315px;
   background: #f1c2c1;
   border: none;
@@ -203,7 +207,7 @@ strong {
     position: absolute;
     z-index: 1;
     top: 120%;
-    left: 52%;
+    left: 20%;
     margin-left: -137px;
 
     &:after {
@@ -215,6 +219,11 @@ strong {
       border-width: 5px;
       border-style: solid;
       border-color: transparent transparent $black transparent;
+    }
+  }
+  .two {
+    @include mobile {
+      left: 60%;
     }
   }
 

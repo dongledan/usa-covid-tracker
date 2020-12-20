@@ -11,7 +11,7 @@
     margin: 50px 0 30px 0;
 
     @include mobile {
-      font-size: 1.8em;
+      font-size: 1.5em;
       margin: 30px 0;
     }
   }
@@ -88,18 +88,22 @@
     top: 90%;
     left: 50%;
     margin-left: -137px;
-
-    @include mobile {
-      left: 150%;
-    }
   }
 
   .leadership {
     background-image: url('https://media.giphy.com/media/QugbVmA8EPmhNlmRKU/giphy-downsized-large.gif');
+
+    @include mobile {
+      left: 0;
+    }
   }
 
   .currently {
     background-image: url('https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif');
+
+    @include mobile {
+      left: 240%;
+    }
   }
 
   &:hover {
