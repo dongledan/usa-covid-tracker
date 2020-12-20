@@ -94,7 +94,7 @@ export default function Table(props) {
             </div>
             <div className="caption tooltip">
               **Learn more about Daily New Cases Rate
-              <span className="tooltiptext">
+              <span className="tooltiptext two">
                 <span>
                   • Average number of new cases in the last 7 days per 100,000
                   residents.

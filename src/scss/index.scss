@@ -27,6 +27,11 @@ body {
   padding: 0 1.0875rem 1.45rem;
 }
 
+// testing containers
+// *{
+//   outline: 1px solid red;
+//  }
+
 html,
 body {
   @include mobile {
@@ -202,7 +207,7 @@ strong {
     position: absolute;
     z-index: 1;
     top: 120%;
-    left: 52%;
+    left: 20%;
     margin-left: -137px;
 
     &:after {
@@ -214,6 +219,12 @@ strong {
       border-width: 5px;
       border-style: solid;
       border-color: transparent transparent $black transparent;
+    }
+  }
+
+  .two {
+    @include mobile {
+      left: 60%;
     }
   }
 
