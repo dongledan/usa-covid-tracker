@@ -195,8 +195,12 @@ export default class Home extends Component {
   }
 
   async getCovidNews() {
-    const {data} = await getCovidNews()
-    this.setState({news: data})
+    const {news} = this.state
+    if (news.length) return
+    else {
+      const {data} = await getCovidNews()
+      this.setState({news: data})
+    }
   }
 
   async onSuggestionSelected(event, {suggestion, suggestionValue}) {
