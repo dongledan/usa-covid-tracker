@@ -92,7 +92,7 @@ export default class Home extends Component {
         inputState[inputState.length - 1] === 'virginia' &&
         inputState.length > 1
       )
-        return
+        return inputState[0] === state[state.length - 1]
       else
         return (
           state[state.length - 1] === inputState[inputState.length - 1] ||
