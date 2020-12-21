@@ -15,7 +15,6 @@ import {
   states,
   nearestHundredth,
 } from './utils'
-import search from '../images/search-icon.png'
 
 import Table from './Table'
 
@@ -34,6 +33,7 @@ export default class Home extends Component {
       suggestions: [],
       isLoading: true,
       news: {},
+      suggestionValue: '',
     }
     this.onChange = this.onChange.bind(this)
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this)
@@ -153,6 +153,8 @@ export default class Home extends Component {
             parseInt(county.population.replace(/,/g, ''))) *
             100000
         )
+        county[county.county] =
+          dailyRate.toString() !== 'NaN' ? dailyRate : '00'
         county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
       } else {
         // else populate object keys with N/A values (US territories ex. district of columbia)
@@ -205,6 +207,7 @@ export default class Home extends Component {
 
   async onSuggestionSelected(event, {suggestion, suggestionValue}) {
     if (event.type === 'click' || event.type === 'keydown') {
+      this.setState({suggestionValue, isLoading: true})
       this.getData(suggestionValue)
       this.getCountyData(suggestionValue)
       this.getCountyPop()
@@ -222,9 +225,9 @@ export default class Home extends Component {
       isLoading,
       prevTimelineWeek,
       news,
+      suggestionValue,
     } = this.state
     const topDaily = currentCounty
-
     const inputProps = {
       placeholder: 'Search for your state',
       value,
@@ -233,12 +236,7 @@ export default class Home extends Component {
     return (
       <div className="home-container">
         <div className="input-container">
-          <div className="input">
-            <img
-              className="search-icon"
-              src={search}
-              alt="magnifying glass acting as search icon"
-            />
+          <span className="input">
             <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -248,7 +246,7 @@ export default class Home extends Component {
               renderSuggestion={renderSuggestion}
               inputProps={inputProps}
             />
-          </div>
+          </span>
         </div>
         {currentState.state ? (
           <div className="data-container">
@@ -277,6 +275,7 @@ export default class Home extends Component {
             topDaily={topDaily}
             isLoading={isLoading}
             news={news}
+            value={suggestionValue}
           />
         ) : (
           <span />

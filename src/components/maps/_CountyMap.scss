@@ -1,0 +1,15 @@
+.county-map-container {
+  width: 100%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+
+  .state-name {
+    font-size: 1.478em;
+    font-weight: 600;
+    margin: 10px 0;
+    text-align: center;
+    color: $red;
+    text-transform: uppercase;
+  }
+}

@@ -3,6 +3,18 @@
   justify-content: center;
   flex-wrap: wrap;
 
+  .right-container {
+    display: flex;
+    width: 40%;
+    margin: 0 10px;
+    flex-direction: column;
+
+    @include mobile {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
   @include mobile {
     flex-direction: column;
     font-size: small;
@@ -76,8 +88,7 @@
         }
       }
       td {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-          monospace;
+        font-family: 'Source Code Pro', monospace;
       }
     }
   }
