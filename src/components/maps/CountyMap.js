@@ -7,12 +7,11 @@ import {
 } from 'react-simple-maps'
 import ReactTooltip from 'react-tooltip'
 import STATE_CENTERS from '../utils/us_state_centers'
-import {getKeyByValue, color} from '../utils'
+import {getKeyByValue, color, search} from '../utils'
 import {mapStates} from '../utils/states'
 
 const CountyMap = (props) => {
   const {value, topDaily} = props
-  console.log(topDaily)
   const stateId = getKeyByValue(mapStates, value)
   const state = STATE_CENTERS[stateId]
   const counties = require(`./data/${stateId}.json`)
@@ -21,7 +20,7 @@ const CountyMap = (props) => {
   return (
     <div className="county-map-container">
       <ComposableMap
-        projection={state.StateCode === 'AK' ? 'geoAlbers' : 'geoMercator'}
+        projection="geoMercator"
         projectionConfig={{
           rotate: state.rotate ? state.rotate : null,
           scale: state.scale ? state.scale : 4000,
@@ -40,12 +39,13 @@ const CountyMap = (props) => {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    stroke={'#eca9a7'}
+                    stroke={'#000'}
                     fill={
-                      topDaily[geo.properties.NAME.toLowerCase()]
+                      search(geo.properties.NAME.toLowerCase(), topDaily)
                         ? color(
-                            topDaily[geo.properties.NAME.toLowerCase()]
-                              .dailyRate
+                            search(geo.properties.NAME.toLowerCase(), topDaily)[
+                              'dailyRate'
+                            ]
                           )
                         : '#ddd'
                     }

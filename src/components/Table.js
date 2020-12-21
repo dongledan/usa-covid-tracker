@@ -4,11 +4,12 @@ import TableBody from './TableBody'
 import Loading from './Loading'
 import CountyMap from './maps/CountyMap'
 import News from './News'
-import {useSortableData} from './utils'
+import {useSortableData, whichState} from './utils'
 
 export default function Table(props) {
   const {day, prevDay, topDaily, isLoading, prevWeek, news, value} = props
   const {items, requestSort, sortConfig} = useSortableData(topDaily)
+  const checkState = whichState(value)
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
       return
@@ -126,9 +127,16 @@ export default function Table(props) {
               </span>
             </div>
           </div>
-          <div className="right-container">
-            <CountyMap value={value} topDaily={topDaily} />
-            {!news.length ? <News news={news} /> : <span />}
+          <div
+            className="right-container"
+            style={{width: `${checkState ? '0' : ''}`}}
+          >
+            {!checkState ? (
+              <CountyMap value={value} topDaily={topDaily} />
+            ) : (
+              <span />
+            )}
+            {news.length ? <News news={news} /> : <span />}
           </div>
         </div>
       )}

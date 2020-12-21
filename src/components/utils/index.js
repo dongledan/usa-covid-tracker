@@ -22,6 +22,15 @@ export const humanDateFormat = (milliseconds) => {
   return dateObject.toLocaleString()
 }
 
+export const whichState = (value) => {
+  return (
+    value === 'alaska' ||
+    value === 'hawaii' ||
+    value === 'district of columbia' ||
+    value === 'puerto rico'
+  )
+}
+
 export const pastDays = () => {
   const pastDays = []
   for (let i = 0; i < 12; i++) {
@@ -51,6 +60,14 @@ export const nearestHundredth = (num) => Math.round(num * 100) / 100
 
 export const getKeyByValue = (object, value) => {
   return Object.keys(object).find((key) => object[key] === value)
+}
+
+export const search = (nameKey, myArray) => {
+  for (let i = 0; i < myArray.length; i++) {
+    if (myArray[i].county === nameKey) {
+      return myArray[i]
+    }
+  }
 }
 
 export const useSortableData = (items, config = null) => {

@@ -61,7 +61,6 @@ export const mapStates = {
   CA: 'california',
   CO: 'colorado',
   CT: 'connecticut',
-  DC: 'district of columbia',
   DE: 'delaware',
   FL: 'florida',
   GA: 'georgia',
