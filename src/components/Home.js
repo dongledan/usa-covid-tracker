@@ -88,11 +88,16 @@ export default class Home extends Component {
         inputState = inputState.join(' ')
         prev = prev[prev.length - 2] + ' ' + prev[prev.length - 1]
         return state === inputState || prev === inputState
-      }
-      return (
-        state[state.length - 1] === inputState[inputState.length - 1] ||
-        prev[prev.length - 1] === inputState[inputState.length - 1]
+      } else if (
+        inputState[inputState.length - 1] === 'virginia' &&
+        inputState.length > 1
       )
+        return
+      else
+        return (
+          state[state.length - 1] === inputState[inputState.length - 1] ||
+          prev[prev.length - 1] === inputState[inputState.length - 1]
+        )
     })
     // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
