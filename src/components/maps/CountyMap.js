@@ -43,6 +43,8 @@ const CountyMap = (props) => {
                   }
                   style={{
                     cursor: 'default',
+                    default: {outline: 'none'},
+
                     hover: {
                       opacity: '0.5',
                       outline: 'none',
