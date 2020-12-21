@@ -1,4 +1,4 @@
-export default {
+export const stateCenter = {
   AL: {
     'Province/State': 'Alabama',
     StateCode: 'AL',

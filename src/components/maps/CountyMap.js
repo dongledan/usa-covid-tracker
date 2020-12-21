@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import {ComposableMap, Geographies, Geography} from 'react-simple-maps'
 import ReactTooltip from 'react-tooltip'
-import STATE_CENTERS from '../utils/us_state_centers'
+import {stateCenter} from '../utils/us_state_centers'
 import {getKeyByValue, color, search} from '../utils'
 import {mapStates} from '../utils/states'
 
 const CountyMap = (props) => {
   const {value, topDaily} = props
   const stateId = getKeyByValue(mapStates, value)
-  const state = STATE_CENTERS[stateId]
+  const state = stateCenter[stateId]
   const counties = require(`./data/${stateId}.json`)
   const [content, setContent] = useState('')
 
