@@ -98,10 +98,10 @@ export default function Table(props) {
               **Learn more about Daily New Cases Rate
               <span className="tooltiptext two">
                 <span>
-                  • Average number of new cases in the last 7 days per 100,000
+                  - Average number of new cases in the last 7 days per 100,000
                   residents.
                 </span>
-                <div>• Why sort by Daily Rate? </div>
+                <div>- Why sort by Daily Rate? </div>
                 <div>
                   It takes population in account to better compare larger and
                   smaller counties.

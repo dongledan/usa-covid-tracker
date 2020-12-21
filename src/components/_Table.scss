@@ -8,6 +8,11 @@
     width: 40%;
     margin: 0 10px;
     flex-direction: column;
+
+    @include mobile {
+      width: 100%;
+      margin: 0;
+    }
   }
 
   @include mobile {

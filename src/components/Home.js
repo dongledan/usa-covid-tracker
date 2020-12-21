@@ -207,7 +207,7 @@ export default class Home extends Component {
 
   async onSuggestionSelected(event, {suggestion, suggestionValue}) {
     if (event.type === 'click' || event.type === 'keydown') {
-      this.setState({suggestionValue})
+      this.setState({suggestionValue, isLoading: true})
       this.getData(suggestionValue)
       this.getCountyData(suggestionValue)
       this.getCountyPop()
