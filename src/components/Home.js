@@ -71,9 +71,10 @@ export default class Home extends Component {
   }
 
   async getCountyData(value) {
-    const days = pastDays() // returns array of past week
+    const days = pastDays() // returns array of past week since data is time series and could be couple days old
     const {data} = await getCurrentCountyCases(value)
     let pop = await this.getCountyPop()
+    // filtering all county data associated with state
     const filteredData = pop.feed.entry.filter((name, i) => {
       let state = name.content.$t.split(' ')
       let inputState = value.split(' ')
@@ -118,7 +119,9 @@ export default class Home extends Component {
             if (censusEntry[1] === entry[1])
               data[i]['population'] = filteredData[j + 1].content.$t
             else continue
-          } else data[i]['population'] = filteredData[j + 1].content.$t
+          } else if (censusEntry[0] === 'dukes' && entry.length === 1)
+            data[i]['population'] = '00'
+          else data[i]['population'] = filteredData[j + 1].content.$t
           break
         } else data[i]['population'] = '00'
       }

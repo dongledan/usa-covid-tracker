@@ -4,7 +4,11 @@ import mask from '../images/mask.png'
 export default function Footer() {
   return (
     <div className="footer-container">
-      <a href={'https://dannyboy.dev/'} rel="noreferrer" target="_blank">
+      <a
+        href="https://www.ucsf.edu/news/2020/06/417906/still-confused-about-masks-heres-science-behind-how-face-masks-prevent"
+        rel="noreferrer"
+        target="_blank"
+      >
         <img
           className="footer-img"
           src={mask}
@@ -21,6 +25,13 @@ export default function Footer() {
           mask
         </a>
         .
+        <div className="caption">
+          Made by{' '}
+          <a href={'https://dannyboy.dev/'} rel="noreferrer" target="_blank">
+            Danny
+          </a>{' '}
+          in the big 🍎.
+        </div>
       </div>
     </div>
   )
