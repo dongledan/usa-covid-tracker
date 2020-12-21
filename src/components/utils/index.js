@@ -1,4 +1,5 @@
 import React from 'react'
+import {states} from './states'
 
 export const getSuggestions = (value) => {
   const inputValue = value.trim().toLowerCase()
@@ -48,6 +49,10 @@ export const color = (dailyRate) => {
 
 export const nearestHundredth = (num) => Math.round(num * 100) / 100
 
+export const getKeyByValue = (object, value) => {
+  return Object.keys(object).find((key) => object[key] === value)
+}
+
 export const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config)
 
@@ -95,57 +100,30 @@ export const useSortableData = (items, config = null) => {
   return {items: sortedItems, requestSort, sortConfig}
 }
 
-export const states = [
-  'Alabama',
-  'Alaska',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
-  'Delaware',
-  'District of Columbia',
-  'Florida',
-  'Georgia',
-  'Hawaii',
-  'Idaho',
-  'Illinois',
-  'Indiana',
-  'Iowa',
-  'Kansas',
-  'Kentucky',
-  'Louisiana',
-  'Maine',
-  'Maryland',
-  'Massachusetts',
-  'Michigan',
-  'Minnesota',
-  'Mississippi',
-  'Missouri',
-  'Montana',
-  'Nebraska',
-  'Nevada',
-  'New Hampshire',
-  'New Jersey',
-  'New Mexico',
-  'New York',
-  'North Carolina',
-  'North Dakota',
-  'Ohio',
-  'Oklahoma',
-  'Oregon',
-  'Pennsylvania',
-  'Puerto Rico',
-  'Rhode Island',
-  'South Carolina',
-  'South Dakota',
-  'Tennessee',
-  'Texas',
-  'Utah',
-  'Vermont',
-  'Virginia',
-  'Washington',
-  'West Virginia',
-  'Wisconsin',
-  'Wyoming',
-]
+export const COLOR_MAP = {
+  ORANGE: {
+    BASE: '#F88722',
+    LIGHT: '#FFC020',
+    DARK: '#933500',
+  },
+  RED: {
+    BASE: '#F03147',
+    LIGHT: '#FC818F',
+    DARK: '#82000E',
+  },
+  GREEN: {
+    // Chosen to match "official" green from logo, etc.
+    BASE: 'rgb(0, 208, 125)',
+    // TODO: Remove GREEN.DARK? Per Josh Ziman we want to consolidate all
+    // instances of green into one, as long as text readability is maintained.
+    DARK: '#0A3D31',
+  },
+  BLUE: '#3BBCE6',
+  GRAY: {
+    BASE: '#CCCCCC',
+    LIGHT: '#E3E3E3',
+    DARK: '#999999',
+  },
+}
+
+export {states}

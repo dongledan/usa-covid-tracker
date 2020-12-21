@@ -9,6 +9,8 @@
 
 @import '../components/Loading';
 
+@import '../components/maps/CountyMap';
+
 @import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap');
 html {
@@ -117,7 +119,7 @@ strong {
 
 .date {
   font-family: 'Source Code Pro', monospace;
-  color: rgba(0, 0, 0, 0.85);
+  opacity: 0.85;
 }
 
 .red {

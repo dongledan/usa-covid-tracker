@@ -277,6 +277,7 @@ export default class Home extends Component {
             topDaily={topDaily}
             isLoading={isLoading}
             news={news}
+            value={value}
           />
         ) : (
           <span />

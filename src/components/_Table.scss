@@ -3,6 +3,13 @@
   justify-content: center;
   flex-wrap: wrap;
 
+  .right-container {
+    display: flex;
+    width: 40%;
+    margin: 0 10px;
+    flex-direction: column;
+  }
+
   @include mobile {
     flex-direction: column;
     font-size: small;

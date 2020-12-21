@@ -2,11 +2,12 @@ import React from 'react'
 
 import TableBody from './TableBody'
 import Loading from './Loading'
+import CountyMap from './maps/CountyMap'
 import News from './News'
 import {useSortableData} from './utils'
 
 export default function Table(props) {
-  const {day, prevDay, topDaily, isLoading, prevWeek, news} = props
+  const {day, prevDay, topDaily, isLoading, prevWeek, news, value} = props
   const {items, requestSort, sortConfig} = useSortableData(topDaily)
   const getClassNamesFor = (name) => {
     if (!sortConfig) {
@@ -125,7 +126,10 @@ export default function Table(props) {
               </span>
             </div>
           </div>
-          {news.length ? <News news={news} /> : <span />}
+          <div className="right-container">
+            <CountyMap value={value} topDaily={topDaily} />
+            {!news.length ? <News news={news} /> : <span />}
+          </div>
         </div>
       )}
     </span>
