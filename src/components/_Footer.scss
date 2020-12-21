@@ -26,5 +26,9 @@
     font-size: 14px;
     margin-top: 4px;
     color: rgba(0, 0, 0, 0.55);
+
+    @include mobile {
+      font-size: 13.18px;
+    }
   }
 }
