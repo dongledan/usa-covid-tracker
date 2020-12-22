@@ -8,8 +8,7 @@ export const resources = [
     link: 'https://www.who.int/health-topics/coronavirus#tab=tab_1',
   },
   {
-    title:
-      'LitCovid: The Most comprehensive Source for Scientific COVID Literature',
+    title: 'LitCovid: Latest Scientific COVID Literature',
     link:
       'https://www.ncbi.nlm.nih.gov/research/coronavirus/?utm_source=Nature%20Briefing&utm_campaign=2033dfb840-briefing-dy-20200318&utm_medium=email&utm_term=0_c9dfd39373-2033dfb840-44701201',
   },
