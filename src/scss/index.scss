@@ -228,33 +228,6 @@ strong {
     }
   }
 }
-.color-container {
-  display: flex;
-  align-items: center;
-
-  .color {
-    height: 16px;
-    width: 16px;
-    display: inline-block;
-    text-align: center;
-    margin-right: 5px;
-  }
-  .dark-red {
-    background: #7f0000;
-  }
-  .red2 {
-    background: $red;
-  }
-  .orange {
-    background: #ffa500;
-  }
-  .yellow {
-    background: #ffdb58;
-  }
-  .green {
-    background: $green;
-  }
-}
 
 .naked {
   background: none;
@@ -349,6 +322,7 @@ strong {
 
   .cough {
     background-image: url('https://i.redd.it/pkc4xq2q5uq41.gif');
+    top: -200%;
   }
 
   &:hover {

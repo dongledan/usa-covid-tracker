@@ -62,7 +62,7 @@ export default class Home extends Component {
 
   async getCountyData(value) {
     const days = pastDays() // returns array of past week since data is time series and could be couple days old
-    const {data} = await getCurrentCountyCases(value)
+    let {data} = await getCurrentCountyCases(value)
     let pop = await this.getCountyPop()
     // filtering all county data associated with state
     const filteredData = pop.feed.entry.filter((name, i) => {
@@ -152,13 +152,12 @@ export default class Home extends Component {
       county['dailyDeaths'] = dailyDeaths
       // if census population data exist
       if (county.population) {
-        let dailyRate = nearestHundredth(
+        const dailyRate = nearestHundredth(
           ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
             7 /
             parseInt(county.population.replace(/,/g, ''))) *
             100000
         )
-        // accounts for counties/entries without population
         county[county.county] =
           dailyRate.toString() !== 'NaN' ? dailyRate : '00'
         county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
@@ -168,6 +167,11 @@ export default class Home extends Component {
         county['dailyRate'] = '00'
       }
     }
+    if (data[0].province === 'utah')
+      data = data.filter(
+        (a) => a.timeline.cases[day] > 0 && a.timeline.deaths[day] > 0
+      )
+
     // sorting by most daily cases data.time.cases[12/25/20] - data.time.cases[12/24/20]
     // sorting by (cases / pop) * 100,000
     const sortedData = data.sort(
