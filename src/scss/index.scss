@@ -136,9 +136,10 @@ strong {
   top: 30px;
   left: -10px;
   border: none;
+  font-size: small;
+  letter-spacing: -0.2px;
   color: #000;
-  padding-left: 11px;
-  padding-right: 8.5px;
+  padding: 0 10px;
   background: #f1c2c1;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -147,7 +148,7 @@ strong {
 }
 
 .react-autosuggest__suggestions-list {
-  margin: 0;
+  margin: 0 1.9px;
   padding: 0;
   list-style-type: none;
 }
@@ -311,7 +312,6 @@ strong {
 .gif {
   position: relative;
   display: inline-block;
-  cursor: pointer;
 
   .gif-pop {
     visibility: hidden;
