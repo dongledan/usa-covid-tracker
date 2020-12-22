@@ -152,12 +152,13 @@ export default class Home extends Component {
       county['dailyDeaths'] = dailyDeaths
       // if census population data exist
       if (county.population) {
-        const dailyRate = nearestHundredth(
+        let dailyRate = nearestHundredth(
           ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
             7 /
             parseInt(county.population.replace(/,/g, ''))) *
             100000
         )
+        // accounts for counties/entries without population
         county[county.county] =
           dailyRate.toString() !== 'NaN' ? dailyRate : '00'
         county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
@@ -249,11 +250,13 @@ export default class Home extends Component {
               Earlier in <span className="blue">{currentState.state}</span>,
               there have been{' '}
               <span className="number">
-                +{currentState.todayCases.toLocaleString()}
+                {currentState.todayCases > 0 ? '+' : ''}
+                {currentState.todayCases.toLocaleString()}
               </span>{' '}
               new cases and{' '}
               <span className="number">
-                +{currentState.todayDeaths.toLocaleString()}
+                {currentState.todayDeaths > 0 ? '+' : ''}
+                {currentState.todayDeaths.toLocaleString()}
               </span>{' '}
               more deaths. There have been a total of{' '}
               <span className="number">

@@ -18,7 +18,7 @@ export const resources = [
       'https://www.uchicagomedicine.org/forefront/prevention-and-screening-articles/wuhan-coronavirus',
   },
   {
-    title: 'FAQ',
+    title: 'COVID-19 FAQ',
     link: 'https://faq.coronavirus.gov/',
   },
 ]
