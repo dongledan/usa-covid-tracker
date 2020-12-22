@@ -4,17 +4,14 @@ import mask from '../images/mask.png'
 export default function Footer() {
   return (
     <div className="footer-container">
-      <a
-        href="https://www.ucsf.edu/news/2020/06/417906/still-confused-about-masks-heres-science-behind-how-face-masks-prevent"
-        rel="noreferrer"
-        target="_blank"
-      >
+      <div className="gif">
         <img
-          className="footer-img"
+          className="footer-img gif"
           src={mask}
           alt={'Illustration of a surgical mask. Please wear a mask!'}
         />
-      </a>
+        <span className="gif-pop cough" />
+      </div>
       <div className="footer-text">
         Please wear a{' '}
         <a

@@ -111,6 +111,7 @@ strong {
 .red {
   color: $red;
   font-weight: 700;
+  text-decoration: underline;
 }
 
 .blue {
@@ -303,6 +304,50 @@ strong {
 
     @include mobile {
       font-size: 0.9em;
+    }
+  }
+}
+
+.gif {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  .gif-pop {
+    visibility: hidden;
+    min-width: 250px;
+    min-height: 130px;
+    font-size: small;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: 50%;
+    margin-left: -137px;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  .leadership {
+    background-image: url('https://media.giphy.com/media/QugbVmA8EPmhNlmRKU/giphy-downsized-large.gif');
+  }
+
+  .currently {
+    background-image: url('https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif');
+  }
+
+  .cough {
+    background-image: url('https://i.redd.it/pkc4xq2q5uq41.gif');
+  }
+
+  &:hover {
+    .gif-pop {
+      visibility: visible;
     }
   }
 }
