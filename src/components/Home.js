@@ -160,7 +160,10 @@ export default class Home extends Component {
         )
         county[county.county] =
           dailyRate.toString() !== 'NaN' ? dailyRate : '00'
-        county['dailyRate'] = dailyRate.toString() !== 'NaN' ? dailyRate : '00'
+        if (dailyRate < 0) county['dailyRate'] = 0
+        else
+          county['dailyRate'] =
+            dailyRate.toString() !== 'NaN' ? dailyRate : '00'
       } else {
         // else populate object keys with N/A values (US territories ex. district of columbia)
         county['population'] = '00'
