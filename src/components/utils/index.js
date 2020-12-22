@@ -27,7 +27,8 @@ export const whichState = (value) => {
     value === 'alaska' ||
     value === 'hawaii' ||
     value === 'district of columbia' ||
-    value === 'puerto rico'
+    value === 'puerto rico' ||
+    value === 'utah'
   )
 }
 

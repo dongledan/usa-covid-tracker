@@ -94,37 +94,15 @@ export default function Table(props) {
             <div className="caption">
               *Sourced from U.S. Census 2019 estimates
             </div>
-            <div className="caption tooltip">
-              **Learn more about Daily New Cases Rate
-              <span className="tooltiptext two">
-                <span>
-                  - Average number of new cases in the last 7 days per 100,000
-                  residents.
-                </span>
-                <div>- Why sort by Daily Rate? </div>
-                <div>
-                  It takes population in account to better compare larger and
-                  smaller counties.
-                </div>
-                <div className="color-container">
-                  <div className="color dark-red"></div> Severe outbreak; super
-                  danger
-                </div>
-                <div className="color-container">
-                  <div className="color red2"></div> Active outbreak; danger
-                  zone
-                </div>
-                <div className="color-container">
-                  <div className="color orange"></div> Moderate outbreak; uh oh
-                </div>
-                <div className="color-container">
-                  <div className="color yellow"></div> Slow growth; not too
-                  shabby
-                </div>
-                <div className="color-container">
-                  <div className="color green"></div> On track; gold star{' '}
-                </div>
-              </span>
+            <div className="caption">
+              <a
+                style={{textDecoration: 'none', color: 'inherit'}}
+                href="https://covid19.gachd.org/daily-case-rate-per-100000/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                **Learn more about Daily New Cases Rate
+              </a>
             </div>
           </div>
           <div className="right-container">

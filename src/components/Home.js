@@ -62,7 +62,7 @@ export default class Home extends Component {
 
   async getCountyData(value) {
     const days = pastDays() // returns array of past week since data is time series and could be couple days old
-    const {data} = await getCurrentCountyCases(value)
+    let {data} = await getCurrentCountyCases(value)
     let pop = await this.getCountyPop()
     // filtering all county data associated with state
     const filteredData = pop.feed.entry.filter((name, i) => {
@@ -91,15 +91,16 @@ export default class Home extends Component {
     })
     // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
-      const entry = data[i].county.split(' ')
+      const entry = data[i].county.split(' ') // ['fairfax', 'city']
 
       for (let j = i; j < filteredData.length; j++) {
-        const censusEntry = filteredData[j].content.$t.split(' ')
+        const censusEntry = filteredData[j].content.$t.split(' ') // ['fairfax', 'city,', 'virginia']
         const nextCensusEntry = filteredData[j + 2]
           ? filteredData[j + 2].content.$t.split(' ')
           : ''
 
         if (j % 2 === 1) continue
+        // odd indices are population entries
         else if (
           censusEntry[0] > entry[0] &&
           nextCensusEntry[0] > entry[0] &&
@@ -116,6 +117,12 @@ export default class Home extends Component {
             else continue
           } else if (censusEntry[0] === 'dukes' && entry.length === 1)
             data[i]['population'] = '00'
+          else if (
+            entry[0] === 'fairfax' &&
+            entry.length === 1 &&
+            censusEntry[1] === 'city,'
+          )
+            continue
           else data[i]['population'] = filteredData[j + 1].content.$t
           break
         } else data[i]['population'] = '00'
@@ -160,6 +167,11 @@ export default class Home extends Component {
         county['dailyRate'] = '00'
       }
     }
+    if (data[0].province === 'utah')
+      data = data.filter(
+        (a) => a.timeline.cases[day] > 0 && a.timeline.deaths[day] > 0
+      )
+
     // sorting by most daily cases data.time.cases[12/25/20] - data.time.cases[12/24/20]
     // sorting by (cases / pop) * 100,000
     const sortedData = data.sort(
@@ -241,15 +253,32 @@ export default class Home extends Component {
             <div className="state-data">
               Earlier in <span className="blue">{currentState.state}</span>,
               there have been{' '}
-              <span className="number">{currentState.todayCases}</span> new
+              <span className="number">
+                {currentState.todayCases > 0 ? '+' : ''}
+                {currentState.todayCases.toLocaleString()}
+              </span>{' '}
+              new cases and{' '}
+              <span className="number">
+                {currentState.todayDeaths > 0 ? '+' : ''}
+                {currentState.todayDeaths.toLocaleString()}
+              </span>{' '}
+              more deaths. There have been a total of{' '}
+              <span className="number">
+                {currentState.cases.toLocaleString()}
+              </span>{' '}
               cases and{' '}
-              <span className="number">{currentState.todayDeaths}</span> more
-              deaths. There have been a total of{' '}
-              <span className="number">{currentState.cases}</span> cases and{' '}
-              <span className="number">{currentState.deaths}</span> deaths.{' '}
-              <span className="date">
-                {isLoading ? '' : `Last updated on ${timelineDay}.`}
-              </span>
+              <span className="number">
+                {currentState.deaths.toLocaleString()}
+              </span>{' '}
+              deaths.{' '}
+              {isLoading ? (
+                <span />
+              ) : (
+                <span>
+                  Last updated on
+                  <span className="date">{` ${timelineDay}`}</span>.
+                </span>
+              )}
             </div>
           </div>
         ) : (
