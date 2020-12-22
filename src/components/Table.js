@@ -127,12 +127,13 @@ export default function Table(props) {
               </span>
             </div>
           </div>
-          <div
-            className="right-container"
-            style={{width: `${checkState ? '0' : ''}`}}
-          >
+          <div className="right-container">
             {!checkState ? (
-              <CountyMap value={value} topDaily={topDaily} />
+              <CountyMap
+                value={value}
+                topDaily={topDaily}
+                checkState={checkState}
+              />
             ) : (
               <span />
             )}

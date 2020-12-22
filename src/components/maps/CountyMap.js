@@ -6,14 +6,17 @@ import {getKeyByValue, color, search} from '../utils'
 import {mapStates} from '../utils/states'
 
 const CountyMap = (props) => {
-  const {value, topDaily} = props
+  const {value, topDaily, checkState} = props
   const stateId = getKeyByValue(mapStates, value)
   const state = stateCenter[stateId]
   const counties = require(`./data/${stateId}.json`)
   const [content, setContent] = useState('')
 
   return (
-    <div className="county-map-container">
+    <div
+      className="county-map-container"
+      style={{width: `${checkState ? '0' : ''}`}}
+    >
       <div className="state-name">{mapStates[stateId]}</div>
       <ComposableMap
         projection="geoMercator"
