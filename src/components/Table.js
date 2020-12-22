@@ -7,7 +7,7 @@ import News from './News'
 import {useSortableData, whichState} from './utils'
 
 export default function Table(props) {
-  const {day, prevDay, topDaily, isLoading, prevWeek, news, value} = props
+  const {day, prevDay, topDaily, isLoading, prevWeek, value} = props
   const {items, requestSort, sortConfig} = useSortableData(topDaily)
   const checkState = whichState(value)
   const getClassNamesFor = (name) => {
@@ -136,7 +136,7 @@ export default function Table(props) {
             ) : (
               <span />
             )}
-            {news.length ? <News news={news} /> : <span />}
+            <News />
           </div>
         </div>
       )}

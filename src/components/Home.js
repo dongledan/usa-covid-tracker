@@ -5,7 +5,6 @@ import {
   getCurrentStateCases,
   getCurrentCountyCases,
   getCountyPopulation,
-  getCovidNews,
 } from '../covid-tracking'
 import {
   getSuggestionValue,
@@ -32,19 +31,10 @@ export default class Home extends Component {
       value: '',
       suggestions: [],
       isLoading: true,
-      news: {},
       suggestionValue: '',
     }
     this.onChange = this.onChange.bind(this)
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this)
-  }
-
-  componentDidMount() {
-    try {
-      this.getCovidNews()
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   onChange = (event, {newValue}) => {
@@ -204,15 +194,6 @@ export default class Home extends Component {
     return data
   }
 
-  async getCovidNews() {
-    const {news} = this.state
-    if (news.length) return
-    else {
-      const {data} = await getCovidNews()
-      this.setState({news: data})
-    }
-  }
-
   async onSuggestionSelected(event, {suggestion, suggestionValue}) {
     if (event.type === 'click' || event.type === 'keydown') {
       this.setState({suggestionValue, isLoading: true})
@@ -232,7 +213,6 @@ export default class Home extends Component {
       prevTimelineDay,
       isLoading,
       prevTimelineWeek,
-      news,
       suggestionValue,
     } = this.state
     const topDaily = currentCounty
@@ -282,7 +262,6 @@ export default class Home extends Component {
             prevWeek={prevTimelineWeek}
             topDaily={topDaily}
             isLoading={isLoading}
-            news={news}
             value={suggestionValue}
           />
         ) : (

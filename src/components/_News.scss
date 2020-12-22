@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 20px;
-  padding: 0.4em 0.9em;
+  margin-top: 10px;
 
   .headline {
     font-size: 1.478em;
@@ -19,7 +18,7 @@
     text-align: justify;
     font-weight: 500;
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.125);
     padding: 15px 30px;
     border-radius: 5px;
 
