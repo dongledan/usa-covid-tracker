@@ -60,11 +60,22 @@ export default class Header extends Component {
             by the <span className="date">numbers:</span>
           </div>
           <div className="header-data">
-            - <span className="number">{usa.cases}</span> people were infected.{' '}
-            <span className="number">+{usa.todayCases}</span> new cases.
+            -{' '}
+            <span className="number">
+              {usa.cases ? usa.cases.toLocaleString() : ''}
+            </span>{' '}
+            people were infected.{' '}
+            <span className="number">
+              +{usa.todayCases ? usa.todayCases.toLocaleString() : ''}
+            </span>{' '}
+            new cases.
           </div>
           <div className="header-data">
-            - <span className="number">{usa.deaths}</span> people have{' '}
+            -{' '}
+            <span className="number">
+              {usa.deaths ? usa.deaths.toLocaleString() : ''}
+            </span>{' '}
+            people have{' '}
             <div className="tooltip">
               died{' '}
               <span className="tooltiptext">
@@ -82,7 +93,11 @@ export default class Header extends Component {
                 more than WWI.
               </span>
             </div>
-            . <span className="number">+{usa.todayDeaths}</span> new deaths.
+            .{' '}
+            <span className="number">
+              +{usa.todayDeaths ? usa.todayDeaths.toLocaleString() : ''}
+            </span>{' '}
+            new deaths.
           </div>
           <div className="header-data">
             -{' '}

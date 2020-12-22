@@ -248,12 +248,22 @@ export default class Home extends Component {
             <div className="state-data">
               Earlier in <span className="blue">{currentState.state}</span>,
               there have been{' '}
-              <span className="number">{currentState.todayCases}</span> new
+              <span className="number">
+                {currentState.todayCases.toLocaleString()}
+              </span>{' '}
+              new cases and{' '}
+              <span className="number">
+                {currentState.todayDeaths.toLocaleString()}
+              </span>{' '}
+              more deaths. There have been a total of{' '}
+              <span className="number">
+                {currentState.cases.toLocaleString()}
+              </span>{' '}
               cases and{' '}
-              <span className="number">{currentState.todayDeaths}</span> more
-              deaths. There have been a total of{' '}
-              <span className="number">{currentState.cases}</span> cases and{' '}
-              <span className="number">{currentState.deaths}</span> deaths.{' '}
+              <span className="number">
+                {currentState.deaths.toLocaleString()}
+              </span>{' '}
+              deaths.{' '}
               {isLoading ? (
                 <span />
               ) : (

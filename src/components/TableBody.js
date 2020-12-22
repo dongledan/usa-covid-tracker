@@ -26,7 +26,7 @@ export default function TableBody(props) {
         </td>
         <td className="margin">
           {county.dailyCases > 0 ? `+` : ''}
-          {county.dailyCases}
+          {county.dailyCases.toLocaleString()}
         </td>
         <td className="margin">
           {county.dailyDeaths > 0 ? `+` : ''}
