@@ -46,8 +46,18 @@ export default function Table(props) {
                       className="naked"
                       onClick={() => requestSort('dailyRate')}
                     >
-                      <div className="title">
-                        Daily New Cases Rate Per 100k**
+                      <div
+                        className="title tooltip"
+                        style={{fontStyle: 'normal'}}
+                      >
+                        Daily Case Rate Per 100K**
+                        <span
+                          className="tooltiptext"
+                          style={{fontWeight: 'normal'}}
+                        >
+                          Average number of newly confirmed cases in the last 7
+                          days per 100,000 residents
+                        </span>
                       </div>
                       <div
                         className={getClassNamesFor('dailyRate')}
@@ -95,13 +105,14 @@ export default function Table(props) {
               *Sourced from U.S. Census 2019 estimates
             </div>
             <div className="caption">
+              **Learn more about{' '}
               <a
-                style={{textDecoration: 'none', color: 'inherit'}}
+                style={{fontStyle: 'italic'}}
                 href="https://covid19.gachd.org/daily-case-rate-per-100000/"
                 rel="noreferrer"
                 target="_blank"
               >
-                **Learn more about Daily New Cases Rate
+                Daily Case Rate Per 100K
               </a>
             </div>
           </div>
