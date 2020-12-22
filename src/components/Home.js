@@ -249,11 +249,11 @@ export default class Home extends Component {
               Earlier in <span className="blue">{currentState.state}</span>,
               there have been{' '}
               <span className="number">
-                {currentState.todayCases.toLocaleString()}
+                +{currentState.todayCases.toLocaleString()}
               </span>{' '}
               new cases and{' '}
               <span className="number">
-                {currentState.todayDeaths.toLocaleString()}
+                +{currentState.todayDeaths.toLocaleString()}
               </span>{' '}
               more deaths. There have been a total of{' '}
               <span className="number">
