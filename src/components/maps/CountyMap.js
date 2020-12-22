@@ -26,6 +26,7 @@ const CountyMap = (props) => {
           center: [state.Longitude, state.Latitude],
         }}
         data-tip=""
+        className="state-map"
       >
         <Geographies geography={counties}>
           {({geographies}) =>

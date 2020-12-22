@@ -1,12 +1,11 @@
 .table-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 
   .right-container {
     display: flex;
-    width: 40%;
-    margin: 0 10px;
+    width: 44.5%;
     flex-direction: column;
 
     @include mobile {
@@ -21,8 +20,7 @@
   }
 
   .table-rank {
-    width: 50%;
-    margin: 0 10px;
+    width: 53%;
 
     @include mobile {
       width: 100%;
