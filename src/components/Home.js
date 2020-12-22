@@ -91,15 +91,16 @@ export default class Home extends Component {
     })
     // [ ".Test", "County,", "State" ] Adding population to data
     for (let i = 0; i < data.length; i++) {
-      const entry = data[i].county.split(' ')
+      const entry = data[i].county.split(' ') // ['fairfax', 'city']
 
       for (let j = i; j < filteredData.length; j++) {
-        const censusEntry = filteredData[j].content.$t.split(' ')
+        const censusEntry = filteredData[j].content.$t.split(' ') // ['fairfax', 'city,', 'virginia']
         const nextCensusEntry = filteredData[j + 2]
           ? filteredData[j + 2].content.$t.split(' ')
           : ''
 
         if (j % 2 === 1) continue
+        // odd indices are population entries
         else if (
           censusEntry[0] > entry[0] &&
           nextCensusEntry[0] > entry[0] &&
@@ -116,6 +117,12 @@ export default class Home extends Component {
             else continue
           } else if (censusEntry[0] === 'dukes' && entry.length === 1)
             data[i]['population'] = '00'
+          else if (
+            entry[0] === 'fairfax' &&
+            entry.length === 1 &&
+            censusEntry[1] === 'city,'
+          )
+            continue
           else data[i]['population'] = filteredData[j + 1].content.$t
           break
         } else data[i]['population'] = '00'
@@ -247,9 +254,14 @@ export default class Home extends Component {
               deaths. There have been a total of{' '}
               <span className="number">{currentState.cases}</span> cases and{' '}
               <span className="number">{currentState.deaths}</span> deaths.{' '}
-              <span className="date">
-                {isLoading ? '' : `Last updated on ${timelineDay}.`}
-              </span>
+              {isLoading ? (
+                <span />
+              ) : (
+                <span>
+                  Last updated on
+                  <span className="date">{` ${timelineDay}`}</span>.
+                </span>
+              )}
             </div>
           </div>
         ) : (

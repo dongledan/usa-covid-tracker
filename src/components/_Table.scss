@@ -86,7 +86,8 @@
         }
       }
       td {
-        font-family: 'Source Code Pro', monospace;
+        font-family: IBM Plex Mono, Menlo, DejaVu Sans Mono,
+          Bitstream Vera Sans Mono, Courier, monospace;
       }
     }
   }
@@ -102,7 +103,6 @@
   display: flex;
 
   .rank {
-    font-weight: 100;
     color: rgba(0, 0, 0, 0.45);
   }
   .county-container {
@@ -116,7 +116,6 @@
     .pop {
       margin-left: 10px;
       font-size: smaller;
-      font-weight: 100;
       color: rgba(0, 0, 0, 0.45);
       margin-top: 5px;
     }
