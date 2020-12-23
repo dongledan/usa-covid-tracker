@@ -98,9 +98,8 @@ export default class Home extends Component {
         const nextCensusEntry = filteredData[j + 2]
           ? filteredData[j + 2].content.$t.split(' ')
           : ''
-
-        if (j % 2 === 1) continue
         // odd indices are population entries
+        if (j % 2 === 1) continue
         else if (
           censusEntry[0] > entry[0] &&
           nextCensusEntry[0] > entry[0] &&
@@ -151,7 +150,7 @@ export default class Home extends Component {
       county['dailyCases'] = dailyCases
       county['dailyDeaths'] = dailyDeaths
       // if census population data exist
-      if (county.population) {
+      if (county.population && county.population !== '00') {
         const dailyRate = nearestHundredth(
           ((county.timeline.cases[day] - county.timeline.cases[prevWeek]) /
             7 /
