@@ -237,23 +237,22 @@ strong {
   color: #000;
 
   .title {
-    font-size: 1.188em;
     color: #000;
     font-weight: 600;
+    font-size: 1.188em;
     text-align: left;
     letter-spacing: -0.5px;
 
     @include mobile {
-      font-size: 0.9em;
+      font-size: 1em;
     }
   }
   .pop {
     color: rgba(0, 0, 0, 0.75);
     margin-top: 5px;
-    font-size: 1em;
 
     @include mobile {
-      font-size: 0.85em;
+      font-size: smaller;
     }
   }
 

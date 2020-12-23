@@ -92,7 +92,7 @@
     }
   }
   .caption {
-    font-weight: 200;
+    font-weight: 300;
     font-size: smaller;
     color: rgba(0, 0, 0, 0.6);
     margin-top: 5px;
@@ -103,7 +103,7 @@
   display: flex;
 
   .rank {
-    color: rgba(0, 0, 0, 0.45);
+    color: rgba(0, 0, 0, 0.5);
   }
   .county-container {
     display: flex;
@@ -116,7 +116,7 @@
     .pop {
       margin-left: 10px;
       font-size: smaller;
-      color: rgba(0, 0, 0, 0.45);
+      color: rgba(0, 0, 0, 0.5);
       margin-top: 5px;
     }
   }
