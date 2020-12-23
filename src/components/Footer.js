@@ -27,7 +27,16 @@ export default function Footer() {
           <a href={'https://dannyboy.dev/'} rel="noreferrer" target="_blank">
             Danny
           </a>{' '}
-          in the big 🍎.
+          in the big{' '}
+          <a
+            style={{textDecoration: 'none', fontSize: '16px'}}
+            href={'https://en.wikipedia.org/wiki/Apple'}
+            rel="noreferrer"
+            target="_blank"
+          >
+            🍎
+          </a>
+          .
         </div>
       </div>
     </div>
