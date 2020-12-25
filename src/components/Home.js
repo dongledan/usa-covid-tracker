@@ -15,7 +15,7 @@ import {
   nearestHundredth,
 } from './utils'
 
-import Table from './Table'
+import Table from './table'
 
 const lowerCaseStates = states.map((state) => state.toLowerCase())
 

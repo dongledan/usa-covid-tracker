@@ -3,11 +3,13 @@
 
 @import '../components/Header';
 @import '../components/Home';
-@import '../components/Table';
-@import '../components/News';
-@import '../components/Footer';
 
-@import '../components/Loading';
+// components/table
+@import '../components/table/Loading';
+@import '../components/table/Table';
+@import '../components/table/News';
+
+@import '../components/Footer';
 
 @import '../components/maps/CountyMap';
 

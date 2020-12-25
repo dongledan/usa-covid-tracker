@@ -1,5 +1,5 @@
 import React from 'react'
-import {color} from './utils'
+import {color} from '../utils'
 
 export default function TableBody(props) {
   const {county, i} = props

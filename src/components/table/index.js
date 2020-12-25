@@ -2,9 +2,9 @@ import React from 'react'
 
 import TableBody from './TableBody'
 import Loading from './Loading'
-import CountyMap from './maps/CountyMap'
+import CountyMap from '../maps'
 import News from './News'
-import {useSortableData, whichState} from './utils'
+import {useSortableData, whichState} from '../utils'
 
 export default function Table(props) {
   const {day, prevDay, topDaily, isLoading, prevWeek, value} = props

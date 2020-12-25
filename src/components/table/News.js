@@ -1,5 +1,5 @@
 import React from 'react'
-import {resources} from './resources'
+import {resources} from '../resources'
 
 export default function News(props) {
   return (
