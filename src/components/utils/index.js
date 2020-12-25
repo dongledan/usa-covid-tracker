@@ -53,7 +53,7 @@ export const color = (dailyRate) => {
   else if (dailyRate <= 75 && dailyRate > 25) return '#c72f2b'
   else if (dailyRate <= 25 && dailyRate > 10) return '#ffa500'
   else if (dailyRate <= 10 && dailyRate > 1) return '#ffdb58'
-  else if (dailyRate.toString() === '00') return ''
+  else if (dailyRate.toString() === '-1') return ''
   else return '#4DD787'
 }
 

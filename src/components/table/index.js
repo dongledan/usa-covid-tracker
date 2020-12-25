@@ -91,15 +91,17 @@ export default function Table(props) {
                   </th>
                 </tr>
               </thead>
-              {items.map((county, i) => (
-                <TableBody
-                  county={county}
-                  day={day}
-                  prevDay={prevDay}
-                  prevWeek={prevWeek}
-                  i={i}
-                />
-              ))}
+              <tbody>
+                {items.map((county, i) => (
+                  <TableBody
+                    county={county}
+                    day={day}
+                    prevDay={prevDay}
+                    prevWeek={prevWeek}
+                    i={i}
+                  />
+                ))}
+              </tbody>
             </table>
             <div className="caption">
               *Sourced from U.S. Census 2019 estimates

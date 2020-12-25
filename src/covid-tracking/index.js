@@ -32,7 +32,7 @@ export const getCurrentCountyCases = (state) =>
     {headers}
   )
 
-// county population
+// county population taken from US census exported to google sheets
 export const getCountyPopulation = () =>
   axios.get(
     `https://spreadsheets.google.com/feeds/cells/1OOg_v8No2ZLqOJi8SB2YNjeBoRyoB8O2MuNRafTvOfI/1/public/full?alt=json`,
