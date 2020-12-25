@@ -131,7 +131,6 @@ export default class Header extends Component {
             >
               Johns Hopkins University
             </a>
-            .
           </div>
         </div>
       </div>

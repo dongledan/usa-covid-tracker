@@ -15,7 +15,7 @@ import {
   nearestHundredth,
 } from './utils'
 
-import Table from './Table'
+import Table from './table'
 
 const lowerCaseStates = states.map((state) => state.toLowerCase())
 
@@ -158,15 +158,15 @@ export default class Home extends Component {
             100000
         )
         county[county.county] =
-          dailyRate.toString() !== 'NaN' ? dailyRate : '00'
+          dailyRate.toString() !== 'NaN' ? dailyRate : '-1'
         if (dailyRate < 0) county['dailyRate'] = 0
         else
           county['dailyRate'] =
-            dailyRate.toString() !== 'NaN' ? dailyRate : '00'
+            dailyRate.toString() !== 'NaN' ? dailyRate : '-1'
       } else {
         // else populate object keys with N/A values (US territories ex. district of columbia)
         county['population'] = '00'
-        county['dailyRate'] = '00'
+        county['dailyRate'] = '-1'
       }
     }
     if (data[0].province === 'utah')
