@@ -6,11 +6,12 @@ import {getKeyByValue, color, search} from '../utils'
 import {mapStates} from '../utils/states'
 
 const CountyMap = (props) => {
-  const {value, topDaily, checkState} = props
+  const {value, topDaily, checkState, day} = props
   const stateId = getKeyByValue(mapStates, value)
   const state = stateCenter[stateId]
   const counties = require(`./data/${stateId}.json`)
   const [content, setContent] = useState('')
+  console.log(search('fresno', topDaily))
 
   return (
     <div
@@ -60,7 +61,17 @@ const CountyMap = (props) => {
                   onMouseEnter={() => {
                     const {NAME} = geo.properties
                     setContent(
-                      `${NAME}, ${
+                      `${NAME.toUpperCase()} | Total Cases: ${search(
+                        geo.properties.NAME.toLowerCase(),
+                        topDaily
+                      )['timeline']['cases'][
+                        day
+                      ].toLocaleString()} | Total Deaths: ${search(
+                        geo.properties.NAME.toLowerCase(),
+                        topDaily
+                      )['timeline']['deaths'][
+                        day
+                      ].toLocaleString()} | Daily Rate: ${
                         search(geo.properties.NAME.toLowerCase(), topDaily)[
                           'dailyRate'
                         ]
@@ -76,7 +87,7 @@ const CountyMap = (props) => {
           }
         </Geographies>
       </ComposableMap>
-      <ReactTooltip>{content}</ReactTooltip>
+      <ReactTooltip className="content-tooltip">{content}</ReactTooltip>
     </div>
   )
 }
