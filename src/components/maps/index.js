@@ -7,11 +7,11 @@ import {mapStates} from '../utils/states'
 
 const CountyMap = (props) => {
   const {value, topDaily, checkState, day} = props
+
   const stateId = getKeyByValue(mapStates, value)
   const state = stateCenter[stateId]
   const counties = require(`./data/${stateId}.json`)
   const [content, setContent] = useState('')
-  console.log(search('fresno', topDaily))
 
   return (
     <div
@@ -72,6 +72,7 @@ const CountyMap = (props) => {
                       )['timeline']['deaths'][
                         day
                       ].toLocaleString()} | Daily Rate: ${
+
                         search(geo.properties.NAME.toLowerCase(), topDaily)[
                           'dailyRate'
                         ]
