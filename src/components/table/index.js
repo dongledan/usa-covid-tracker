@@ -124,6 +124,8 @@ export default function Table(props) {
                 value={value}
                 topDaily={topDaily}
                 checkState={checkState}
+                day={day}
+
               />
             ) : (
               <span />

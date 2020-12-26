@@ -29,7 +29,7 @@ export default function Footer() {
           </a>{' '}
           in the big{' '}
           <a
-            style={{textDecoration: 'none', fontSize: '16px'}}
+            style={{textDecoration: 'none', fontSize: '17px'}}
             href={'https://en.wikipedia.org/wiki/Apple'}
             rel="noreferrer"
             target="_blank"
