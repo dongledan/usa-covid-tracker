@@ -83,10 +83,9 @@ export const stateCenter = {
   HI: {
     'Province/State': 'Hawaii',
     StateCode: 'HI',
-    Latitude: 21.0943,
+    Latitude: 20.5943,
     Longitude: -157.4983,
-    rotate: [150, -10],
-    scale: 5000,
+    scale: 6000,
   },
   ID: {
     'Province/State': 'Idaho',
