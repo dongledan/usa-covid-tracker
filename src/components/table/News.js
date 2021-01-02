@@ -1,7 +1,7 @@
 import React from 'react'
 import {resources} from '../resources'
 
-export default function News(props) {
+export default function News() {
   return (
     <div className="news-container">
       <div className="headline">Resources</div>

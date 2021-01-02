@@ -38,8 +38,6 @@ export const pastDays = () => {
       month = '' + (realDate.getMonth() + 1),
       day = '' + realDate.getDate(),
       year = realDate.getFullYear().toString().substr(2, 2)
-    if (month.length < 2) month = '0' + month
-    if (day.length < 2) day = '0' + day
     let actualDate = [month, day, year].join('/')
 
     pastDays.push(actualDate)
