@@ -279,6 +279,7 @@ export const stateCenter = {
     StateCode: 'PR',
     Latitude: 18.2208,
     Longitude: -66.5901,
+    scale: 15000,
   },
   RI: {
     'Province/State': 'Rhode Island',

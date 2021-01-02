@@ -92,6 +92,7 @@ export const mapStates = {
   OK: 'oklahoma',
   OR: 'oregon',
   PA: 'pennsylvania',
+  PR: 'puerto rico',
   RI: 'rhode island',
   SC: 'south carolina',
   SD: 'south dakota',

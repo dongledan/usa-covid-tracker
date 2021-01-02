@@ -24,10 +24,7 @@ export const humanDateFormat = (milliseconds) => {
 
 export const whichState = (value) => {
   return (
-    value === 'alaska' ||
-    value === 'district of columbia' ||
-    value === 'puerto rico' ||
-    value === 'utah'
+    value === 'alaska' || value === 'district of columbia' || value === 'utah'
   )
 }
 
